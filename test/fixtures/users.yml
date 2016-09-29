@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  password: MyString
+  is_admin: false
+  mobile_number: 1
+  wx_code: MyString
+
+two:
+  name: MyString
+  password: MyString
+  is_admin: false
+  mobile_number: 1
+  wx_code: MyString

@@ -70,5 +70,6 @@ gem 'carrierwave'
 # font
 gem 'font-awesome-sass'
 
+gem 'bcrypt'
 #gem "jquery-turbolinks"
 # added by CX===============

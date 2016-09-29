@@ -8,7 +8,7 @@ class Product < ApplicationRecord
     hidden: 0,
     archived: -1}
 
-  belongs_to :catagory
+  belongs_to :category
 
   mount_uploader :photo, PhotoUploader
 

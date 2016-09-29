@@ -5,7 +5,7 @@
   <%= f.input :photo, as: :file  %>
   <%= f.hidden_field :photo_cache %>
   <%= f.input :status, prompt: "--请选择商品状态--" %>
-  <%= f.association :catagory, prompt: "--请选择商品类别--" %>
+  <%= f.association :category, prompt: "--请选择商品类别--" %>
   <%= f.input :stock %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

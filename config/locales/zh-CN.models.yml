@@ -2,7 +2,13 @@ zh-CN:
   activerecord:
     models:
       product: 商品
+      category: 商品分类
+      user: 用户
     attributes:
+      category:
+        name: 名称
+        description: 描述
+        status: 状态
       product:
         name: 名称
         desc: 描述
@@ -12,6 +18,15 @@ zh-CN:
         price:	价格
         photo: 图片
         status:	状态
-        catagory:	类别
+        category:	类别
         stock: 库存
+      user:
+        name: 用户名
+        password: 密码
+        is_admin: 是否为管理员？
+        mobile_number: 手机号
+        wx_code: 微信号
+        created_at: 创建时间
+
+
 

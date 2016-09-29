@@ -5,8 +5,8 @@ one:
   desc: MyText
   price: 9.99
   photo: MyString
-  status: 
-  catagory_id: MyString
+  status:
+  category_id: MyString
   stock: 1
 
 two:
@@ -14,6 +14,6 @@ two:
   desc: MyText
   price: 9.99
   photo: MyString
-  status: 
-  catagory_id: MyString
+  status:
+  category_id: MyString
   stock: 1

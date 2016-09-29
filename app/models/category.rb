@@ -1,4 +1,4 @@
-class Catagory < ApplicationRecord
+class Category < ApplicationRecord
   validates :name , presence: true
   enum status: {
     active: 1,

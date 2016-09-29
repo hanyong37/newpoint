@@ -4,7 +4,7 @@
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title" id="myModalLabel">新增产品类别</h4>
           </div>
-          <%= simple_form_for @catagory, remote: true do |f| %>
+          <%= simple_form_for @category, remote: true do |f| %>
           <div class="modal-body">
             <%= f.input :name %>
             <%= f.input :description %>

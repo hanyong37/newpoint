@@ -5,16 +5,16 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%=icon('flag')%><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th class='hidden-xs'><%= model_class.human_attribute_name(:desc) %></th>
-      <th><%= model_class.human_attribute_name(:price) %></th>
-      <th class=' hidden-xs'><%= model_class.human_attribute_name(:photo) %></th>
-      <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:catagory_id) %></th>
-      <th><%= model_class.human_attribute_name(:stock) %></th>
-      <th class=' hidden-xs'><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th class="col-sm-1"><%= model_class.human_attribute_name(:id) %></th>
+      <th class="col-sm-1"><%= model_class.human_attribute_name(:name) %></th>
+      <th class='col-sm-3 hidden-sm'><%= model_class.human_attribute_name(:desc) %></th>
+      <th class="col-sm-1"><%= model_class.human_attribute_name(:price) %></th>
+      <th class='col-sm-1 hidden-xs'><%= model_class.human_attribute_name(:photo) %></th>
+      <th class="col-sm-1"><%= model_class.human_attribute_name(:status) %></th>
+      <th class="col-sm-1"><%= model_class.human_attribute_name(:category_id) %></th>
+      <th class="col-sm-1"><%= model_class.human_attribute_name(:stock) %></th>
+      <th class='col-sm-1 hidden-xs'><%= model_class.human_attribute_name(:created_at) %></th>
+      <th class="col-sm-1"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +26,7 @@
         <td><%= product.price %></td>
         <td class=' hidden-xs'><%= image_tag(product.photo_url, class: 'product-sm-img') %></td>
         <td><%= product.status_i18n %></td>
-        <td><%= product.catagory.name %></td>
+        <td><%= product.category.name %></td>
         <td><%= product.stock %></td>
         <td class=' hidden-xs'><%=l product.created_at %></td>
         <td>

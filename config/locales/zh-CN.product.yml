@@ -13,7 +13,7 @@ zh-CN:
         price:	价格
         photo: 图片
         status:	状态
-        catagory_id:	产品类别
+        category_id:	产品类别
         stock: 库存
   enums:
     product:

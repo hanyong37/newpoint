@@ -1,4 +1,4 @@
-<%- model_class = Catagory -%>
+<%- model_class = Category -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
@@ -14,18 +14,18 @@
     </tr>
   </thead>
   <tbody>
-    <% @catagories.each do |catagory| %>
+    <% @categories.each do |category| %>
       <tr>
-        <td><%= link_to catagory.id, catagory_path(catagory) %></td>
-        <td><%= catagory.name %></td>
-        <td class='hidden-xs'><%= catagory.description %></td>
-        <td><%= catagory.status_i18n %></td>
-        <td class='hidden-xs'><%=l catagory.created_at %></td>
+        <td><%= link_to category.id, category_path(category) %></td>
+        <td><%= category.name %></td>
+        <td class='hidden-xs'><%= category.description %></td>
+        <td><%= category.status_i18n %></td>
+        <td class='hidden-xs'><%=l category.created_at %></td>
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")), catagory_path(catagory), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_catagory_path(catagory), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.show', :default => t("helpers.links.show")), category_path(category), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_category_path(category), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")) ,
-            catagory_path(catagory),
+            category_path(category),
             :method => :delete,
             :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
             :class => 'btn btn-xs btn-danger' %>
@@ -37,13 +37,13 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCatagory">
-  <%= t("helpers.links.new") + Catagory.model_name.human %>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newCategory">
+  <%= t("helpers.links.new")+Category.model_name.human %>
 </button>
 
 <%= content_for :page_modal do %>
    <!-- Modal -->
-  <div class="modal fade" id="newCatagory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="newCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <%= render "create_modal" %>
   </div>
 <% end %>
