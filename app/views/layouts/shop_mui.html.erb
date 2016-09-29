@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <%= stylesheet_link_tag "shop"%>
+    <%= javascript_include_tag "shop" %>
+  </head>
+
+  <body>
+    <header  class="mui-bar mui-bar-nav">
+      <h1 class="mui-title">蔬菜商城</h1>
+    </header>
+
+    <nav class="mui-bar mui-bar-tab">
+      <a class="mui-tab-item mui-active" href="barItem/home.html">
+        <span class="mui-icon  icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+      </a>
+      <a class="mui-tab-item" href="barItem/wishList.html">
+        <span class="mui-icon  icon-xinyuandan"></span>
+        <span class="mui-tab-label">心愿单</span>
+      </a>
+      <a class="mui-tab-item" href="barItem/cart.html">
+        <span class="mui-icon  icon-cart"></span>
+        <span class="mui-tab-label">购物车</span>
+      </a>
+      <a class="mui-tab-item" href="barItem/mine.html">
+        <span class="mui-icon  mui-icon-person"></span>
+        <span class="mui-tab-label">我的</span>
+      </a>
+    </nav>
+
+    <div class="mui-content" style="background-color:#fff">
+         </div>
+
+    <script type="text/javascript">
+mui.init()
+    </script>
+  </body>
+<%= yield %>
+</html>
+

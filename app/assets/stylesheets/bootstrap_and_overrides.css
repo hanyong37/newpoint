@@ -1,0 +1,25 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Static version of css will use Glyphicons sprites by default
+  =require twitter-bootstrap-static/sprites
+*/
+
+
+.brand-img{
+  width: auto;
+  height: 70px;
+}
+
+.product-img{
+  max-width: 100%;
+  height:auto;
+}
+
+.product-sm-img{
+  width: auto;
+  max-height: 50px;
+}
+.shop-body{
+  padding-top: 70px;
+}

@@ -1,0 +1,8 @@
+<% if @catagory.errors.any? %>
+  $('#newCatagory').html("<%= escape_javascript(render("create_modal"))%>");
+<% else %>
+  $('#productsTable').prepend('<%= j render(@catagory) %>');
+  $('#newProductFormModal').modal('hide');
+  $('#newProductForm')[0].reset();
+<% end %>
+

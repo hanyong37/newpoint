@@ -1,0 +1,17 @@
+zh-CN:
+  activerecord:
+    models:
+      product: 商品
+    attributes:
+      product:
+        name: 名称
+        desc: 描述
+        price: 价格
+        created_at: 添加日期
+        updated_at: 更新日期
+        price:	价格
+        photo: 图片
+        status:	状态
+        catagory:	类别
+        stock: 库存
+

@@ -1,0 +1,28 @@
+zh-CN:
+  activerecord:
+    models:
+      product: 商品
+    attributes:
+      product:
+        id: '#'
+        name: 名称
+        desc: 描述
+        price: 价格
+        created_at: 添加日期
+        updated_at: 更新日期
+        price:	价格
+        photo: 图片
+        status:	状态
+        catagory_id:	产品类别
+        stock: 库存
+  enums:
+    product:
+      status:
+        active: 正常
+        archived: 归档
+        hidden: 不可用
+        fresh: 新品上市
+        hot: 热销商品
+
+
+

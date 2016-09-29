@@ -1,0 +1,33 @@
+<ul class="mui-table-view mui-grid-view">
+  <% @products.each do |product| %>
+    <li class="mui-table-view-cell mui-media mui-col-xs-6">
+      <a href="#">
+        <div>
+          <%= image_tag(product.photo_url, class: 'mui-media-object') %>
+          <div class="mui-media-body">
+            <span> <%= product.desc %> </span>
+            <span>¥<%= product.price %> </span>
+            <img class="Jschangewidth" src="//m.360buyimg.com/mobilecms/s300x300_jfs/t2884/34/1402458997/279738/fef5656b/573d8831N12149ebc.jpg!q70.jpg" height="177.5px" width="177.5px">
+        <span class="similar-product-text">三星（SAMSUNG）32GB UHS-1 Class10 TF(Micro SD)存储卡（读速80Mb/s）升级版</span>
+        <span class="similar-product-price"><span class="big-price">58</span><span class="small-price">.90</span>
+        </span>
+
+          </div>
+        </div>
+      </a>
+    </li>
+  <% end %>
+
+  <li class="similar-li">
+    <a href="#">
+      <div class="similar-product">
+        <img class="Jschangewidth" src="//m.360buyimg.com/mobilecms/s300x300_jfs/t2884/34/1402458997/279738/fef5656b/573d8831N12149ebc.jpg!q70.jpg" height="177.5px" width="177.5px">
+        <span class="similar-product-text">三星（SAMSUNG）32GB UHS-1 Class10 TF(Micro SD)存储卡（读速80Mb/s）升级版</span>
+        <span class="similar-product-price"><span class="big-price">58</span><span class="small-price">.90</span>
+        </span>
+        <span class="sam-space">
+        </span>
+      </div>
+    </a>
+  </li>
+</ul>
