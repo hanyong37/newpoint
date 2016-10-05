@@ -4,6 +4,7 @@ zh-CN:
       product: 商品
       category: 商品分类
       user: 用户
+      member: 会员
     attributes:
       category:
         name: 名称
@@ -27,6 +28,13 @@ zh-CN:
         mobile_number: 手机号
         wx_code: 微信号
         created_at: 创建时间
+      member:
+        user_id: 登录用户
+        validate_from: 有效期开始日期
+        validate_to: 有效期结束日期
+        created_at: 创建时间
+        address: 送货地址
+
 
 
 

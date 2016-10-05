@@ -1,0 +1,10 @@
+<%= simple_form_for @member, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.association :user %>
+  <%= f.input :validate_from %>
+  <%= f.input :validate_to %>
+  <%= f.input :address %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                members_path, :class => 'btn btn-default' %>
+<% end %>

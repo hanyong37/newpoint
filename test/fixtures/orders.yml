@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member_id: MyString
+  memo: MyString
+  address: MyString
+  status: 
+  feedback: MyString
+  stars: 
+
+two:
+  member_id: MyString
+  memo: MyString
+  address: MyString
+  status: 
+  feedback: MyString
+  stars: 

@@ -1,0 +1,16 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :member_id %>
+    <%= f.input :memo %>
+    <%= f.input :address %>
+    <%= f.input :status %>
+    <%= f.input :feedback %>
+    <%= f.input :stars %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

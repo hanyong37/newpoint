@@ -52,7 +52,13 @@
             <li><%= link_to Category.model_name.human+'管理', categories_path %></li>
             <li><%= link_to Product.model_name.human+'管理', products_path  %></li>
             <li><%= link_to User.model_name.human+'管理', users_path%></li>
+            <li><%= link_to Member.model_name.human+'管理',  members_path%></li>
             <li><%= link_to "订单管理", 'orders_path'  %></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a herf="#">你好，<%= session[:user_name] ? session[:user_name]:"请登录" %>！</a></li>
+            <li><%= link_to "注销", log_out_path if session[:user_name]%></li>
           </ul>
         </div>
       </div>
