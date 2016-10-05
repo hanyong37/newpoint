@@ -1,6 +1,5 @@
-<h1>Editing Lineitem</h1>
-
-<%= render 'form', lineitem: @lineitem %>
-
-<%= link_to 'Show', @lineitem %> |
-<%= link_to 'Back', lineitems_path %>
+<%- model_class = Lineitem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>
