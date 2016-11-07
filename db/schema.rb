@@ -10,17 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921072248) do
+ActiveRecord::Schema.define(version: 20161103124152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "catagories", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.integer  "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "lineitems", force: :cascade do |t|
+    t.string   "product_id"
+    t.integer  "amount"
+    t.string   "order_id"
+    t.decimal  "price",       precision: 10, scale: 2
+    t.string   "description"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.date     "validate_from"
+    t.date     "validate_to"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "address"
+    t.string   "mobile"
+    t.string   "wxcode"
+    t.string   "name"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "member_id"
+    t.string   "memo"
+    t.string   "address"
+    t.integer  "status"
+    t.string   "feedback"
+    t.integer  "stars"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -29,10 +61,20 @@ ActiveRecord::Schema.define(version: 20160921072248) do
     t.decimal  "price"
     t.string   "photo"
     t.integer  "status"
-    t.integer  "catagory_id"
+    t.integer  "category_id"
     t.integer  "stock"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "is_admin"
+    t.string   "mobile_number"
+    t.string   "wx_code"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
   end
 
 end

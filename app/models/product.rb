@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  default_scope {order(created_at: :desc)}
   validates :name, :price, :status, :photo, :stock, presence: true
 
   enum status: {
@@ -8,7 +9,7 @@ class Product < ApplicationRecord
     hidden: 0,
     archived: -1}
 
-  belongs_to :catagory
+  belongs_to :category
 
   mount_uploader :photo, PhotoUploader
 

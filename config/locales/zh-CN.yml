@@ -1,7 +1,7 @@
 zh-CN:
   activerecord:
     models:
-      catagory:
+      category:
         one: 商品类别
         other: 商品类别
       product:

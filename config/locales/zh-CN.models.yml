@@ -1,8 +1,40 @@
 zh-CN:
+  enums:
+    product:
+      status:
+        active: 正常
+        archived: 归档
+        hidden: 不可用
+        fresh: 新品上市
+        hot: 热销商品
+    category:
+      status:
+        active: 正常
+        archived: 归档
+        inactive: 不可用
+    order:
+      status:
+        draft: 购物车
+        submitted: 已提交
+        preparing: 备货中
+        delivering: 送货中
+        recieved: 已收货
+        stared: 已评价
+        cancelled: 已取消
+
   activerecord:
     models:
       product: 商品
+      category: 商品分类
+      user: 用户
+      member: 会员
+      order: 订单
+      lineitem: 订单明细
     attributes:
+      category:
+        name: 名称
+        description: 描述
+        status: 状态
       product:
         name: 名称
         desc: 描述
@@ -12,6 +44,43 @@ zh-CN:
         price:	价格
         photo: 图片
         status:	状态
-        catagory:	类别
+        category:	类别
         stock: 库存
+      user:
+        name: 用户名
+        password: 密码
+        is_admin: 是否为管理员？
+        mobile_number: 手机号
+        wx_code: 微信号
+        created_at: 创建时间
+      member:
+        name: 名字
+        mobile: 手机号
+        wxcode: 微信
+        validate_from: 有效期开始日期
+        validate_to: 有效期结束日期
+        created_at: 创建时间
+        address: 送货地址
+      order:
+        member_id: 会员
+        memo: 下单备注
+        address:  送货地址
+        status: 订单状态
+        feedback: 客户反馈
+        stars: 评价星
+        created_at: 创建时间
+        li_number: 明细条目
+        sum_price: 订单总价
+
+      lineitem:
+        product_id: 商品
+        amount: 数量
+        order_id: 订单号
+        price:  金额
+        description:  描述
+        created_at: 创建时间
+
+
+
+
 

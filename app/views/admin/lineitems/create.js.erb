@@ -1,0 +1,4 @@
+<% if @lineitem.errors.any? %>
+  $('#newLineitem').html("<%= escape_javascript(render("orders/create_lineitem_modal"))%>");
+<% end %>
+

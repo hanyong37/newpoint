@@ -70,5 +70,9 @@ gem 'carrierwave'
 # font
 gem 'font-awesome-sass'
 
+gem 'bcrypt'
 #gem "jquery-turbolinks"
+gem "omniauth-wechat-oauth2"
+
+gem 'weui-rails'
 # added by CX===============
