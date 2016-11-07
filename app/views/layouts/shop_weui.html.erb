@@ -3,40 +3,36 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>WeUI</title>
-    <!-- 引入 WeUI -->
-    <link rel="stylesheet" href="//res.wx.qq.com/open/libs/weui/1.0.0/weui.css"/>
+    <title>北京新焦点农业</title>
+    <%= stylesheet_link_tag 'weui-rails', media: 'all' %>
+    <script src="http://cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js"></script>
   </head>
-  <body>
-    <div class="container">
-      <div class="page tabbar js_show">
-    <div class="page__bd" style="height: 100%;">
-        <div class="weui-tab">
-            <div class="weui-tab__panel">
+  <body ontouchstart>
+    <div class='container' >
 
-            </div>
-            <div class="weui-tabbar">
-                <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
-                    <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">微信</p>
-                </a>
-                <a href="javascript:;" class="weui-tabbar__item">
-                    <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">通讯录</p>
-                </a>
-                <a href="javascript:;" class="weui-tabbar__item">
-                    <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">发现</p>
-                </a>
-                <a href="javascript:;" class="weui-tabbar__item">
-                    <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                    <p class="weui-tabbar__label">我</p>
-                </a>
-            </div>
+      <div class="page__bd" >
+      <div class="weui-tab">
+        <div class="weui-tab__panel">
+          <%=yield %>
         </div>
+
+        <div class="weui-tabbar" style="position:fixed;">
+          <a href="javascript:;" class="weui-tabbar__item">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <p class="weui-tabbar__label">商店</p>
+          </a>
+          <a href="javascript:;" class="weui-tabbar__item">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <p class="weui-tabbar__label">购物车</p>
+          </a>
+          <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <p class="weui-tabbar__label">我</p>
+          </a>
+        </div>
+        </div>
+
+      </div>
     </div>
-</div>
-    </div>
-    <!-- 使用 -->
   </body>
 </html>

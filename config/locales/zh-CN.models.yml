@@ -54,7 +54,9 @@ zh-CN:
         wx_code: 微信号
         created_at: 创建时间
       member:
-        user_id: 登录用户
+        name: 名字
+        mobile: 手机号
+        wxcode: 微信
         validate_from: 有效期开始日期
         validate_to: 有效期结束日期
         created_at: 创建时间

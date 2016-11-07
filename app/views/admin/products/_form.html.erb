@@ -1,0 +1,14 @@
+<%= simple_form_for @product, url: admin_products_path  do |f| %>
+  <%= f.input :name %>
+  <%= f.input :desc %>
+  <%= f.input :price %>
+  <%= f.input :photo, as: :file  %>
+  <%= f.hidden_field :photo_cache %>
+  <%= f.input :status, prompt: "--请选择商品状态--" %>
+  <%= f.association :category, prompt: "--请选择商品类别--" %>
+  <%= f.input :stock %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                admin_products_path, :class => 'btn btn-default' %>
+<% end %>

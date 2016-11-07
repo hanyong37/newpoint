@@ -1,4 +1,4 @@
 class Member < ApplicationRecord
-  belongs_to :user
-  has_many :orders
+  validates :name, :mobile, :address ,:validate_from, :validate_to, presence: :true
+  has_many :orrders
 end

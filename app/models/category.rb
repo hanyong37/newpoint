@@ -4,5 +4,5 @@ class Category < ApplicationRecord
     active: 1,
     archived: 0,
     inactive: -1}
-  has_many :products
+  has_many :products, dependent: :restrict_with_error
 end

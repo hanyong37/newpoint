@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  default_scope {order(created_at: :desc)}
   validates :name, :price, :status, :photo, :stock, presence: true
 
   enum status: {
