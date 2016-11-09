@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
-  default_scope {order(created_at: :desc)}
   validates :name, :price, :status, :photo, :stock, presence: true
+
+  default_scope {order(created_at: :desc)}
+  scope :shop_view, ->{where.not(status:'hidden').where.not(status: 'archived').order(created_at: :desc)}
 
   enum status: {
     hot: 3,

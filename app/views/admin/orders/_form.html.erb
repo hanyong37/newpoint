@@ -1,4 +1,4 @@
-<%= simple_form_for @order,url:admin_orders_path , :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for [:admin, @order], :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.association :member, label: '会员' %>
   <%= f.input :status %>
   <%= f.input :memo %>

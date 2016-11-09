@@ -1,28 +1,28 @@
-
 <div class="weui-tab">
   <div class="weui-tab__panel">
     <div class="weui-panel weui-panel_access">
-      <div class="weui-panel__hd">商品列表</div>
+      <div class="weui-panel__hd"><p> <img src="<%= image_path("newpoint.png") %>" style="width:20px;padding-bottom:-10;margin-right:5px;">商品列表</p></div>
 
       <div class="weui-panel__bd">
 
         <% @products.each do |product| #TODO: put styles into css;%>
-          <a href="<%= weixin_product_path(product) %>" class=" " style="display:inline-block; width:50%; padding:0.2rem; margin-bottom:0.4rem;  box-sizing:border-box; position:relative; float:left">
-            <div class="">
-              <%= image_tag(product.photo_url, display: 'block', height: 'auto', width: '100%') %>
-            </div>
-            <div class="" style="display: inline;">
-              <span class=""  style="font-size:13px; height:36px; inline-height:18px; color:#232326"><%=product.name%></span>
-              <span class=""  style="font-size:13px; height:36px; inline-height:18px; color:#232326"><%=t product.status%></span>
-              <span class="price-info" style='color:red; font-size:12; display:block'>
-                <em class="price-yen">      ¥ </em>
-                <em class="price-int" style='font-size:13; font-weight:bold'><%=product.price_int%></em>
-                <em class="price-decimal">.<%=product.price_cent%></em>
-               </span>
+        <a href="<%= weixin_product_path(product) %>" class=" " style="display:inline-block; width:50%; padding:0.2rem; margin-bottom:0.4rem;  box-sizing:border-box; position:relative; float:left">
+          <div class="">
+            <%= image_tag(product.photo_url, class: "np-prd-image" ) %>
+          </div>
+          <div class="" style="display: inline;">
+            <span class=""  style="font-size:13px; height:36px; inline-height:18px; color:#232326"><%=product.name%></span>
+            <span class=""  style="font-size:13px; height:36px; inline-height:18px; color:#232326"><%=t product.status%></span>
+            <span class="price-info" style='color:red; font-size:12; display:block'>
+              <em class="price-yen">      ¥ </em>
+              <em class="price-int" style='font-size:13; font-weight:bold'><%=product.price_int%></em>
+              <em class="price-decimal">.<%=product.price_cent%></em>
+            </span>
 
-            </div>
-          </a>
-        <% end %>
+          </div>
+        </a>
+      <% end %>
       </div>
-
     </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<!-- 产品明细内容区 -->
+<%= form_for @cart, url: weixin_cart_path(@cart) do |f|%>
+  <div class="weui-panel weui-panel_access">
+    <% if @cart.lineitems.size == 0 %>
+      <div class="weui-panel__hd">您还没有添加商品，快去选购吧～</div>
+    <% else %>
+      <div class="weui-panel__hd">商品列表</div>
+        <div class="weui-panel__bd">
+
+      <% @cart.lineitems.each do |li| %>
+          <div class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <%= image_tag(li.product.photo_url, class: 'weui-media-box__thumb') %>
+            </div>
+
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title"><%=li.product.name%></h4>
+              <p class="weui-media-box__desc">单价: <%=li.product.price%> 合计: <%=li.price%></p>
+              <p class="weui-media-box__desc">数量: <%=li.amount%></p>
+            </div>
+            <div class="weui-media-box__ft">
+              <%= f.submit "删除", name:"delete_lineitem[#{li.id}]" , :class => 'weui-btn weui-btn_default weui-btn_mini' %>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+        </div>
+  </div>
+
+  <!-- 订单内容编辑区 -->
+  <div class="weui-panel weui-panel_access">
+
+    <div class="weui-panel__bd">
+      <div class="weui-cells__title">确认订单信息</div>
+
+      <div class="weui-cells weui-cells_form">
+
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><label class="weui-label">*<em>收货手机号</em></label></div>
+          <div class="weui-cell__bd">
+            <%= f.text_field :ship_mobile, type:'tel', placeholder:'请输入手机号',class:'weui-input' %>
+          </div>
+        </div>
+
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><label class="weui-label">*<em>收件人</em></label></div>
+          <div class="weui-cell__bd">
+            <%= f.text_field :ship_reciever, type:'text', placeholder:'请输入收件人姓名',class:'weui-input' %>
+          </div>
+        </div>
+
+        <div class="weui-cell">
+          <div class="weui-cell__bd"> *<em>收货地址 </em></div>
+        </div>
+
+        <div class="weui-cell">
+          <div class="weui-cell__bd">
+            <%= f.text_area :ship_address, placeholder:'请输入收货地址', rows:3, class:'weui-textarea' %>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- 按钮区域-->
+  <div class="weui-panel weui-panel_access">
+    <div class="weui-panel__bd">
+      <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+          <div class="weui-btn-area">
+            <%= f.submit "保存收货信息", name:'save' ,:class => 'weui-btn weui-btn_default' %>
+            <%= f.submit "提交订单", name:'submit' , :class => 'weui-btn weui-btn_primary'  unless @cart.lineitems.size == 0 %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="weui-panel__ft">
+      &nbsp </div>
+  </div>
+
+<%end%>

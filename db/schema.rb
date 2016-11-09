@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103124152) do
+ActiveRecord::Schema.define(version: 20161109082319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,15 @@ ActiveRecord::Schema.define(version: 20161103124152) do
   create_table "members", force: :cascade do |t|
     t.date     "validate_from"
     t.date     "validate_to"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.text     "address"
     t.string   "mobile"
     t.string   "wxcode"
     t.string   "name"
+    t.string   "default_ship_reciever"
+    t.string   "default_ship_address"
+    t.string   "default_ship_mobile"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -51,8 +54,11 @@ ActiveRecord::Schema.define(version: 20161103124152) do
     t.integer  "status"
     t.string   "feedback"
     t.integer  "stars"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "ship_reciever"
+    t.string   "ship_address"
+    t.string   "ship_mobile"
   end
 
   create_table "products", force: :cascade do |t|

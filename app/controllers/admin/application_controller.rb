@@ -8,7 +8,7 @@ class Admin::ApplicationController < ActionController::Base
   def require_login
     unless session && session[:user_id]
       flash[:error] = "请先登录！"
-      redirect_to new_session_path
+      redirect_to new_admin_session_path
     end
   end
 

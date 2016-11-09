@@ -1,0 +1,74 @@
+<div class="weui-tab">
+  <div id='navbar' class="weui-navbar" style="position:fixed">
+    <div id='nav-all' class="weui-navbar__item weui-bar__item_on">
+      全部(<%=@orders.size.to_s%>)
+    </div>
+    <div id='nav-preparing' class="weui-navbar__item">
+      备货中(<%=(@orders.preparing.size+@orders.submitted.size).to_s%>)
+    </div>
+    <div id='nav-delivering' class="weui-navbar__item">
+      配送中(<%=@orders.delivering.size.to_s%>)
+    </div>
+    <div id='nav-completed' class="weui-navbar__item">
+      已完成(<%=(@orders.recieved.size+@orders.stared.size+@orders.cancelled.size).to_s%>)
+    </div>
+  </div>
+  <div class="weui-tab__panel">
+    <% if @orders.present? %>
+      <% @orders.each do |order| %>
+        <div class='np-item np-item-<%=order.status%>'>
+          <div class="weui-cells__title">更新：<%= order.updated_at %></div>
+          <div class="weui-cells">
+            <a class="weui-cell weui-cell_access" href="#show">
+              <div class="weui-cell__hd">
+                <%= image_tag(order.lineitems.first.product.photo_url, class: 'np-ord-index-img' ) %>
+              </div>
+              <div class="weui-cell__bd">
+                <p><%="\"#{order.lineitems.first.product.name}\"等#{order.lineitems.size}种共#{order.total_amount}件商品。"%></p>
+              </div>
+              <div class="weui-cell__ft"><%=order.status_i18n%></div>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="weui-cells__title">您还没有任何订单，赶快去商店看看吧～</div>
+    <% end %>
+  </div>
+</div>
+
+<% content_for(:page_javascript) do %>
+<script type="text/javascript">
+
+document.getElementById('nav-all').onclick = function(evt){ switch_button(this);show_items(['submitted','preparing','delivering','recieved','stared','cancelled']);};
+document.getElementById('nav-delivering').onclick = function(evt){switch_button(this);show_items(['delivering']);};
+document.getElementById('nav-preparing').onclick = function(evt){switch_button(this);show_items(['submitted','preparing']);};
+document.getElementById('nav-completed').onclick = function(evt){switch_button(this);show_items(['recieved','stared','cancelled']);};
+
+function switch_button(currentItem){
+  var navItems = document.getElementsByClassName("weui-navbar__item");
+  for(i=0; i<navItems.length; i++){
+    navItems[i].classList.remove("weui-bar__item_on");
+  }
+  currentItem.classList.add("weui-bar__item_on");
+}
+
+function show_items(types){
+  var list = document.getElementsByClassName("np-item");
+  for(i=0; i<list.length; i++ ){
+    if (arrayContains(list[i].classList, types)) {
+      list[i].style.display = '';
+    }else{
+      list[i].style.display = 'none';
+    }
+  }
+}
+
+function arrayContains(classList, typeArray){
+  return typeArray.some(function(type){
+    return classList.contains('np-item-'+type);
+  })
+}
+
+</script>
+<%end%>

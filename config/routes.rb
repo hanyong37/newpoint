@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  root 'weixin/products#index'
   namespace  :admin do
     root "orders#index"
     resources :products, :categories, :users, :members, :orders
@@ -15,7 +16,12 @@ Rails.application.routes.draw do
     root 'products#index'
     resource :session, only: [:create]
     resource :register, only: [:new, :create]
-    resources :products, only: [:index, :show]
+    resources :products, only: [:index, :show] do
+      resource :add_to_cart, only: [:create]
+    end
+    resource :cart, only: [:show, :update]
+    resources :orders, only: [:index]
+    resource :my_info, only: [:show, :update]
     #resource :shop, only: [:show]
   end
 

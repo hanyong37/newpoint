@@ -1,1 +1,25 @@
 @import "weui";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+.np-prd-image-container {
+  //width: 100%;
+  //height: 0;
+  //padding-bottom: 60%;
+  //overflow: hidden;
+}
+.np-prd-image{
+  width: 100%;
+  height: auto;
+}
+
+
+body{
+  background-color: #eeeeee;
+}
+.np-ord-index-img{
+  width:20px;
+  margin-right:5px;
+  display:block
+}

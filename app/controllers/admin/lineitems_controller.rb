@@ -27,10 +27,6 @@ class Admin::LineitemsController < Admin::ApplicationController
   def create
     @lineitem = Lineitem.new(lineitem_params)
     @order = Order.find(@lineitem.order_id)
-    if @lineitem.validate
-      @lineitem.price = @lineitem.amount * @lineitem.product.price
-      @lineitem.description = '产品明细描述'
-    end
 
     respond_to do |format|
       if @lineitem.save

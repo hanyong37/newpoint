@@ -1,18 +1,13 @@
-<div class='page__hd'>
-   <% if flash[:notice] %>
-         <p class="weui-page__desc"><%= flash[:notice] %></p>
-   <% end %>
-</div>
 <div class='page__bd'>
-<div class="weui-cells__title">请输入您的姓名手机号以确认身份:</div>
-<div class='weui-cells weui-cells_form'>
-  <%= simple_form_for @member, url: weixin_register_path, defaults:{wrapper_html: { class: 'weui-cell' }, input_html:{class: 'weui-cell__bd weui-input'}, label_html:{class: 'weui-cell__hd, weui-label'}}  do |f| %>
-  <%= f.input :name %>
-  <%= f.input :mobile%>
-  <%= f.input :wxcode, as: :hidden , input_html:{value: session[:un_registered_openid]}%>
-</div>
-<div class='weui-btn-area'>
-  <%= f.button :submit,'关联微信号', :class => 'weui-btn weui-btn_primary' %>
+  <div class="weui-cells__title">请输入您的姓名手机号以确认身份:</div>
+  <div class='weui-cells weui-cells_form'>
+    <%= simple_form_for @member, url: weixin_register_path, defaults:{wrapper_html: { class: 'weui-cell' }, input_html:{class: 'weui-cell__bd weui-input'}, label_html:{class: 'weui-cell__hd, weui-label'}}  do |f| %>
+      <%= f.input :name %>
+      <%= f.input :mobile%>
+      <%= f.input :wxcode, as: :hidden , input_html:{value: session[:un_registered_openid]}%>
+  </div>
+  <div class='weui-btn-area'>
+    <%= f.button :submit,'关联微信号', :class => 'weui-btn weui-btn_primary' %>
+  </div>
 </div>
 <% end %>
-</div>

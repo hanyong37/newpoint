@@ -1,31 +1,42 @@
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd"><%=@product.name%></div>
 
-<div class="weui-tab">
-  <div class="weui-tab__panel">
-
-    <div class="weui-panel weui-panel_access">
-      <div class="weui-panel__hd">商品列表</div>
-
-      <div class="weui-panel__bd">
-        <div class="">
-          <%= image_tag(@product.photo_url, display: 'block', height: 'auto', width: '100%') %>
-        </div>
-        <p><%=@product.name%></p>
-        <p style="color: #333;"><%=@product.desc%></p>
-        <span class="pro-price">
-          <span class="price-info">
-            <em class="price-yen">¥</em><em class="price-int"><%= @product.price_int %></em><em class="price-decimal">.<%=@product.price_cent %></em>
-          </span>
-          <%= icon('bullhorn','热销', class: 'price-tags') if @product.hot? %>
-          <%= icon('bullhorn','新品', class: 'price-tags') if @product.fresh? %>
+  <div class="weui-panel__bd">
+    <%= image_tag(@product.photo_url, display: 'block', height: 'auto', width: '100%') %>
+    <div class="weui-media-box weui-media-box_text">
+      <h4 class="weui-media-box__title">
+        <%= icon('bullhorn','热销') if @product.hot? %>
+        <%= icon('bullhorn','新品') if @product.fresh? %>
+      </h4>
+      <p class="weui-media-box__desc"><%=@product.desc%></p>
+      <span class="pro-price">
+        <span class="price-info">
+          <em class="price-yen">¥</em><em class="price-int"><%= @product.price_int %></em><em class="price-decimal">.<%=@product.price_cent %></em>
         </span>
-      </div>
+      </span>
     </div>
-  </div>
+    <div class="weui-panel__ft">
 
-  <div class="weui-tab__panel">
-    <div class="weui-panel weui-panel_access">
-      <div class="weui-panel__bd">送货</div>
-      <div class="weui-panel__ft">操作</div>
+      <%= form_for @lineitem , url:  weixin_product_add_to_cart_path(@product) do |f| %>
+        <div class="weui-cells weui-cells_form">
+          <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__hd">
+              <label class="weui-label">购买数量</label>
+            </div>
+            <div class="weui-cell__bd">
+              <%= f.select :amount, 1..10,{include_blank: false }, {class: 'weui-select'}%>
+              <%= f.hidden_field :product_id%>
+            </div>
+          </div>
+        </div>
+
+        <div class="weui-btn-area">
+          <%= f.submit "加入购物车", :class => 'weui-btn weui-btn_primary' %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>
+
+
