@@ -7,14 +7,14 @@ class Weixin::CartsController < Weixin::ApplicationController
   def update
     @cart = Order.get_cart_order(session[:current_member_id])
     if  params[:save].present?
-      if @cart.update(params.require(:order).permit(:ship_reciever, :ship_address, :ship_mobile))
+      if @cart.update(params.require(:order).permit(:ship_reciever, :ship_address, :ship_mobile, :memo))
         redirect_to weixin_cart_path(@cart), notice: '购物车保存成功！'
       else
         redirect_to weixin_cart_path(@cart), notice: '保存失败！'
       end
 
     elsif params[:submit].present?
-      if @cart.update(params.require(:order).permit(:ship_reciever, :ship_mobile, :ship_mobile).merge({status:'submitted'}))
+      if @cart.update(params.require(:order).permit(:ship_reciever, :ship_mobile, :ship_mobile, :memo).merge({status:'submitted'}))
         @cart.member.update(
           default_ship_reciever: @cart.ship_reciever,
           default_ship_mobile: @cart.ship_mobile,

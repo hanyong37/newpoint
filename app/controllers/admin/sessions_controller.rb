@@ -8,7 +8,7 @@ class Admin::SessionsController < Admin::ApplicationController
     if ( user && user.authenticate(params[:session][:password]))
       session[:user_id] = user.id
       session[:user_name] = user.name
-      redirect_to admin_root_path
+      redirect_to admin_orders_path
     else
       flash[:alert] = "错误的用户名密码！请重试"
       redirect_to new_admin_session_path

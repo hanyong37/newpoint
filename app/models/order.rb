@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :lineitems, dependent: :destroy
   belongs_to :member
   #before_save :update_ship_info, if: "self.draft?"
-  after_create :set_ship_info, if: "self.draft?"
+  after_create :set_ship_info, if: "draft? || submitted?"
 
   default_scope ->{order(id: :desc)}
   scope :my_order, ->(member_id) {where("member_id = '?' and status <> ?", member_id, Order.statuses[:draft]).order(updated_at: :desc) if member_id.present?}
@@ -22,6 +22,10 @@ class Order < ApplicationRecord
     m = Member.find_by_id member_id
     return if m.blank?
     Order.find_or_create_by(member_id: m.id, status: 'draft')
+  end
+
+  def brief
+    "#{lineitems.first.product.name}\"等#{lineitems.size}种共#{total_amount}件商品。"
   end
 
   def sum_price

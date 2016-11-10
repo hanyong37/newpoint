@@ -15,7 +15,7 @@ class Weixin::RegistersController < Weixin::ApplicationController
       @member.wxcode = params[:member][:wxcode]
       @member.save
       session[:current_member_id] = @member.id
-      redirect_to weixin_root_path
+      redirect_to root_path
     end
   end
 end
