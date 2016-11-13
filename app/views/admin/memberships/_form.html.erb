@@ -1,0 +1,8 @@
+<%= simple_form_for [:admin,@membership], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :order_limit %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                admin_memberships_path, :class => 'btn btn-default' %>
+<% end %>

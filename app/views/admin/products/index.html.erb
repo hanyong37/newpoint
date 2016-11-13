@@ -8,11 +8,10 @@
       <th class="col-sm-1"><%= model_class.human_attribute_name(:id) %></th>
       <th class="col-sm-1"><%= model_class.human_attribute_name(:name) %></th>
       <th class='col-sm-3 hidden-xs'><%= model_class.human_attribute_name(:desc) %></th>
-      <th class="col-sm-1"><%= model_class.human_attribute_name(:price) %></th>
+      <th class="col-sm-1"><%= model_class.human_attribute_name(:limit) %></th>
       <th class='col-sm-1 hidden-xs'><%= model_class.human_attribute_name(:photo) %></th>
       <th class="col-sm-1"><%= model_class.human_attribute_name(:status) %></th>
       <th class="col-sm-1"><%= model_class.human_attribute_name(:category_id) %></th>
-      <th class="col-sm-1"><%= model_class.human_attribute_name(:stock) %></th>
       <th class='col-sm-1 hidden-xs'><%= model_class.human_attribute_name(:created_at) %></th>
       <th class="col-sm-1"><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -23,11 +22,10 @@
         <td><%= link_to product.id, admin_product_path(product) %></td>
         <td><%= product.name %></td>
         <td class=' hidden-xs'><%= product.desc %></td>
-        <td><%= product.price %></td>
+        <td><%= product.limit %></td>
         <td class=' hidden-xs'><%= image_tag(product.photo_url, class: 'product-sm-img') %></td>
         <td><%= product.status_i18n %></td>
         <td><%= product.category.name %></td>
-        <td><%= product.stock %></td>
         <td class=' hidden-xs'><%=l product.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),

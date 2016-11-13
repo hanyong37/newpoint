@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109082319) do
+ActiveRecord::Schema.define(version: 20161113153931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20161109082319) do
     t.string   "default_ship_reciever"
     t.string   "default_ship_address"
     t.string   "default_ship_mobile"
+    t.integer  "membership_id"
+    t.string   "membership_number"
+    t.index ["membership_id"], name: "index_members_on_membership_id", using: :btree
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "order_limit"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -71,6 +81,7 @@ ActiveRecord::Schema.define(version: 20161109082319) do
     t.integer  "stock"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "limit"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,4 +94,5 @@ ActiveRecord::Schema.define(version: 20161109082319) do
     t.string   "password_digest"
   end
 
+  add_foreign_key "members", "memberships"
 end

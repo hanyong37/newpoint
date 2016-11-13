@@ -1,8 +1,11 @@
 <%= simple_form_for [:admin, @member ], :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
+  <%= f.association :membership, label: '会员卡' %>
   <%= f.input :mobile %>
-  <%= f.input :wxcode %>
   <%= f.input :address %>
+  <%= f.input :default_ship_mobile %>
+  <%= f.input :default_ship_address %>
+  <%= f.input :default_ship_reciever %>
   <%= f.input :validate_from %>
   <%= f.input :validate_to %>
 

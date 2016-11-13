@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  validates :name, :price, :status, :photo, :stock, presence: true
+  validates :name, :limit, :status, :photo, presence: true
 
   default_scope {order(created_at: :desc)}
   scope :shop_view, ->{where.not(status:'hidden').where.not(status: 'archived').order(created_at: :desc)}

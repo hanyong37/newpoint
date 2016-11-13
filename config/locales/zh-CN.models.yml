@@ -30,6 +30,7 @@ zh-CN:
       member: 会员
       order: 订单
       lineitem: 订单明细
+      membership:  会员卡
     attributes:
       category:
         name: 名称
@@ -39,6 +40,7 @@ zh-CN:
         name: 名称
         desc: 描述
         price: 价格
+        limit: 每单限量
         created_at: 添加日期
         updated_at: 更新日期
         price:	价格
@@ -61,6 +63,10 @@ zh-CN:
         validate_to: 有效期结束日期
         created_at: 创建时间
         address: 送货地址
+        default_ship_reciever:  默认收货人
+        default_ship_mobile:  默认收货手机号
+        default_ship_address:  默认收货地址
+
       order:
         member_id: 会员
         memo: 下单备注
@@ -71,6 +77,7 @@ zh-CN:
         created_at: 创建时间
         li_number: 明细条目
         sum_price: 订单总价
+        membership_id: 会员卡
 
       lineitem:
         product_id: 商品
@@ -78,6 +85,10 @@ zh-CN:
         order_id: 订单号
         price:  金额
         description:  描述
+        created_at: 创建时间
+      membership:
+        name: 会员卡名称
+        order_limit: 单次菜品限额
         created_at: 创建时间
 
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'weixin/products#index'
   namespace  :admin do
     root "orders#index"
+    resources :memberships
     resources :products, :categories, :users, :members, :orders
     resources :lineitems
     resources :sessions, only: [:new, :create, :destroy]

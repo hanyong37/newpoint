@@ -42,7 +42,7 @@ class Admin::MembersController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to [:admin,@member], notice: 'Member was successfully updated.' }
+        format.html { redirect_to admin_members_url, notice: 'Member was successfully updated.' }
         format.json { render :show, status: :ok, location: @member }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class Admin::MembersController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit( :address ,:validate_from, :validate_to,:name, :mobile, :wxcode)
+      params.require(:member).permit( :address ,:membership_id ,:validate_from, :validate_to,:name, :mobile,:default_ship_mobile, :default_ship_reciever, :default_ship_address)
     end
 end

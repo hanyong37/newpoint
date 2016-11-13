@@ -24,7 +24,7 @@
               <label class="weui-label">购买数量</label>
             </div>
             <div class="weui-cell__bd">
-              <%= f.select :amount, 1..10,{include_blank: false }, {class: 'weui-select'}%>
+              <%= f.select :amount, 1..product.limit,{include_blank: false }, {class: 'weui-select'}%>
               <%= f.hidden_field :product_id%>
             </div>
           </div>
