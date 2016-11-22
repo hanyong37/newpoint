@@ -5,15 +5,15 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th class="col-sm-1"><%= model_class.human_attribute_name(:id) %></th>
-      <th class="col-sm-1"><%= model_class.human_attribute_name(:name) %></th>
-      <th class='col-sm-3 hidden-xs'><%= model_class.human_attribute_name(:desc) %></th>
-      <th class="col-sm-1"><%= model_class.human_attribute_name(:limit) %></th>
-      <th class='col-sm-1 hidden-xs'><%= model_class.human_attribute_name(:photo) %></th>
-      <th class="col-sm-1"><%= model_class.human_attribute_name(:status) %></th>
-      <th class="col-sm-1"><%= model_class.human_attribute_name(:category_id) %></th>
-      <th class='col-sm-1 hidden-xs'><%= model_class.human_attribute_name(:created_at) %></th>
-      <th class="col-sm-1"><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th class=""><%= model_class.human_attribute_name(:id) %></th>
+      <th class=""><%= model_class.human_attribute_name(:name) %></th>
+      <th class='hidden-xs'><%= model_class.human_attribute_name(:desc) %></th>
+      <th class=""><%= model_class.human_attribute_name(:limit) %></th>
+      <th class='hidden-xs'><%= model_class.human_attribute_name(:photo) %></th>
+      <th class=""><%= model_class.human_attribute_name(:status) %></th>
+      <th class=""><%= model_class.human_attribute_name(:category_id) %></th>
+      <th class='hidden-xs'><%= model_class.human_attribute_name(:created_at) %></th>
+      <th class=""><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +21,7 @@
       <tr>
         <td><%= link_to product.id, admin_product_path(product) %></td>
         <td><%= product.name %></td>
-        <td class=' hidden-xs'><%= product.desc %></td>
+        <td class=' hidden-xs'><%= truncate product.desc, length: 15 %></td>
         <td><%= product.limit %></td>
         <td class=' hidden-xs'><%= image_tag(product.photo_url, class: 'product-sm-img') %></td>
         <td><%= product.status_i18n %></td>

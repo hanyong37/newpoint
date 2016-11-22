@@ -1,0 +1,76 @@
+<div class="weui-tab">
+  <div class="weui-tab__panel">
+
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd">
+    可选 <%= Member.find(session[:current_member_id]).membership.order_limit %>
+  已选 <span id='cart_total_amount'><%= @cart.total_amount %></span>
+  </div>
+
+  <div class="weui-panel__bd">
+        <% @products.each do |product| %>
+    <div class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <%= image_tag(product.photo_url, class: 'weui-media-box__thumb') %>
+      </div>
+
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title"><%=product.name%></h4>
+        <div class="weui-media-box__desc">
+          <p>每单可选：<%=product.limit.to_s%>份</p>
+          <h4>购物车已选：
+          <%= form_tag '/weixin/cart/remove_item', remote: true,method: :post,  style: "display: inline-block;" do %>
+            <%= hidden_field_tag 'product_id', product.id %>
+            <%= button_tag name: "remove_to_cart" ,class: 'weui-btn weui-btn_mini weui-btn_default' do %>
+              -
+            <% end %>
+          <%end%>
+
+          <input id='product_input_<%=product.id%>' size=1 type='text'  value='<%= @cart.product_amount(product)%>'/>
+          <%= form_tag '/weixin/cart/add_item', remote: true,method: :post,  style: "display: inline-block;" do %>
+            <%= hidden_field_tag 'product_id', product.id %>
+            <%= button_tag name: "add_to_cart" ,class: 'weui-btn weui-btn_mini weui-btn_default' do %>
+              +
+            <% end %>
+          <%end%>
+          </h4>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="weui-panel__ft">
+    <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+      <div class="weui-cell__bd">查看更多</div>
+      <span class="weui-cell__ft"></span>
+    </a>
+  </div>
+</div>
+
+    <div class="weui-panel weui-panel_access">
+      <div class="weui-panel__hd"><p> <img src="<%= image_path("newpoint.png") %>" style="width:20px;padding-bottom:-10;margin-right:5px;">商品列表</p></div>
+
+      <div class="weui-panel__bd">
+
+        <% @products.each do |product| #TODO: put styles into css;%>
+        <a href="<%= weixin_product_path(product) %>" class=" " style="display:inline-block; width:50%; padding:0.2rem; margin-bottom:0.4rem;  box-sizing:border-box; position:relative; float:left">
+          <div class="">
+            <%= image_tag(product.photo_url, class: "np-prd-image" ) %>
+          </div>
+          <div class="" style="display: inline;">
+            <span class=""  style="font-size:13px; height:36px; inline-height:18px; color:#232326"><%=product.name%></span>
+            <span class=""  style="font-size:13px; height:36px; inline-height:18px; color:#232326"><%=t product.status%></span>
+            <span class="price-info" style='color:red; font-size:12; display:block'>
+              <em class="price-yen">      ¥ </em>
+              <em class="price-int" style='font-size:13; font-weight:bold'><%=product.price_int%></em>
+              <em class="price-decimal">.<%=product.price_cent%></em>
+            </span>
+
+          </div>
+        </a>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

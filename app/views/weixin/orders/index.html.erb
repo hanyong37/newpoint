@@ -13,7 +13,7 @@
       已完成(<%=(@orders.recieved.size+@orders.stared.size+@orders.cancelled.size).to_s%>)
     </div>
   </div>
-  <div class="weui-tab__panel">
+  <div class="weui-tab__panel" style="margin-buttom:70px">
     <% if @orders.present? %>
       <% @orders.each do |order| %>
         <div class='np-item np-item-<%=order.status%>'>

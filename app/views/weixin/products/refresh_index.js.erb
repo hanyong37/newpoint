@@ -1,0 +1,12 @@
+$('#cart_total_amount').html("<%=@cart.total_amount%>");
+$('#product_input_<%=params[:product_id]%>').val(<%=@cart.amount_of_product(params[:product_id])%>);
+$('#cart_total_amount').animate({fontSize:"26px"}).animate({fontSize:"16px"});
+document.getElementById("loadingToast").style='display:none'
+
+<% if @cart.amount_of_product(params[:product_id]) >= Product.find(params[:product_id]).limit %>
+document.getElementById('add_btn_<%=params[:product_id]%>').innerHTML = '.'
+document.getElementById("add_btn_<%=params[:product_id]%>").disabled=true
+<% else %>
+document.getElementById('add_btn_<%=params[:product_id]%>').innerHTML = '+'
+document.getElementById("add_btn_<%=params[:product_id]%>").disabled=false
+<% end %>

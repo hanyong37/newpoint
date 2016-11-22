@@ -20,7 +20,10 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show] do
       resource :add_to_cart, only: [:create]
     end
-    resource :cart, only: [:show, :update]
+    resource :cart, only: [:show, :update] do
+      resource :add_item, only: [:create]
+      resource :remove_item, only: [:create]
+    end
     resources :orders, only: [:index, :show, :update]
     resource :my_info, only: [:show, :update]
     #resource :shop, only: [:show]

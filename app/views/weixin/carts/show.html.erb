@@ -19,7 +19,7 @@
               <p class="weui-media-box__desc">数量: <%=li.amount%></p>
             </div>
             <div class="weui-media-box__ft">
-              <%= f.submit "删除", name:"delete_lineitem[#{li.id}]" , :class => 'weui-btn weui-btn_default weui-btn_mini' %>
+              <%= f.submit "删除", name:"delete_lineitem[#{li.id}]", data: { confirm: "确定要删除吗？" }, :class => 'weui-btn weui-btn_warn weui-btn_mini' %>
             </div>
           </div>
         <% end %>

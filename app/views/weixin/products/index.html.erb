@@ -1,28 +1,79 @@
 <div class="weui-tab">
   <div class="weui-tab__panel">
-    <div class="weui-panel weui-panel_access">
-      <div class="weui-panel__hd"><p> <img src="<%= image_path("newpoint.png") %>" style="width:20px;padding-bottom:-10;margin-right:5px;">商品列表</p></div>
 
+    <div class="weui-panel weui-panel_access" style="position:fixed;width:100%;padding:0px;height:60px;z-index:1">
+      <div class="weui-panel__hd" style='overflow:hidden'>
+        <span style='width:50%'>
+          <img src="<%= image_path("newpoint.png") %>" style="width:20px;padding-bottom:-10;margin-right:5px;">商品列表
+          <span style="text-align:right;float:right;width:50%">
+            可选 <span style='font-size:medium'><%= Member.find(session[:current_member_id]).membership.order_limit %></span>
+          已选 <span style='font-size:medium' id='cart_total_amount'><%= @cart.total_amount %></span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="weui-panel weui-panel_access" style="margin-top:60px">
       <div class="weui-panel__bd">
+        <% @products.each do |product| %>
+          <div class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <%= image_tag(product.photo_url, class: 'weui-media-box__thumb') %>
+            </div>
 
-        <% @products.each do |product| #TODO: put styles into css;%>
-        <a href="<%= weixin_product_path(product) %>" class=" " style="display:inline-block; width:50%; padding:0.2rem; margin-bottom:0.4rem;  box-sizing:border-box; position:relative; float:left">
-          <div class="">
-            <%= image_tag(product.photo_url, class: "np-prd-image" ) %>
-          </div>
-          <div class="" style="display: inline;">
-            <span class=""  style="font-size:13px; height:36px; inline-height:18px; color:#232326"><%=product.name%></span>
-            <span class=""  style="font-size:13px; height:36px; inline-height:18px; color:#232326"><%=t product.status%></span>
-            <span class="price-info" style='color:red; font-size:12; display:block'>
-              <em class="price-yen">      ¥ </em>
-              <em class="price-int" style='font-size:13; font-weight:bold'><%=product.price_int%></em>
-              <em class="price-decimal">.<%=product.price_cent%></em>
-            </span>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title"><%=product.name%></h4>
+              <div class="weui-media-box__desc">
+                <p>每单可选：<%=product.limit.to_s%>份</p>
+                <span>购物车已选：
+                </span>
+                <span style='float:right'>
+                  <%= form_tag '/weixin/cart/remove_item', remote: true,method: :post,  style: "display: inline-block;" do %>
+                    <%= hidden_field_tag 'product_id', product.id %>
+                    <%= button_tag name: "remove_to_cart" ,class: 'weui-btn weui-btn_mini weui-btn_default' ,style:"font-size:medium" do %>
+                      -
+                    <% end %>
+                  <%end%>
 
+                  <input id='product_input_<%=product.id%>' style='border:0;text-align:center;width:20px;font-size:small' type='text'  value='<%= @cart.product_amount(product)%>'/>
+                  <%= form_tag '/weixin/cart/add_item', remote: true,method: :post,  style: "display: inline-block;" do %>
+                    <%= hidden_field_tag 'product_id', product.id %>
+                    <% if @cart.amount_of_product(product.id) >= product.limit %>
+                    <%= button_tag name: "add_to_cart",id:"add_btn_#{product.id}", disabled:true,class: 'weui-btn weui-btn_mini weui-btn_default' ,style:"font-size:medium" do %>.<% end %>
+                      <% else %>
+                    <%= button_tag name: "add_to_cart",id:"add_btn_#{product.id}", class: 'weui-btn weui-btn_mini weui-btn_default',style:"font-size:medium" do %>+<% end %>
+                    <% end %>
+                  <%end%>
+                </span>
+              </div>
+            </div>
           </div>
-        </a>
-      <% end %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+<div id="loadingToast"  style="display:none;">
+  <div class="weui-mask_transparent"></div>
+  <div class="weui-toast">
+    <i class="weui-loading weui-icon_toast"></i>
+    <p class="weui-toast__content">加载中</p>
+  </div>
+</div>
+
+
+
+<% content_for(:page_javascript) do %>
+<script type="text/javascript">
+
+var btns = document.getElementsByClassName("weui-btn");
+for(i=0; i<btns.length; i++){
+  btns[i].onclick = function(evt){
+    document.getElementById("loadingToast").style=''
+};
+
+}
+
+
+</script>
+<%end%>

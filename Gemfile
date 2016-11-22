@@ -75,4 +75,5 @@ gem 'bcrypt'
 gem "omniauth-wechat-oauth2"
 
 gem 'weui-rails'
+gem 'kaminari'
 # added by CX===============

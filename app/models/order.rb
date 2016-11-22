@@ -1,7 +1,10 @@
 class Order < ApplicationRecord
   validates :member_id, :status, presence: :true
+  #validates_uniqueness_of :member_id, scope: draft
+
   has_many :lineitems, dependent: :destroy
   belongs_to :member
+
   #before_save :update_ship_info, if: "self.draft?"
   after_create :set_ship_info, if: "draft? || submitted?"
 
@@ -18,14 +21,34 @@ class Order < ApplicationRecord
     cancelled: -1   #已取消
   }
 
+  def amount_of_product(product_id)
+    lineitems.find_by_product_id(product_id).try(:amount) || 0
+  end
+
   def self.get_cart_order(member_id)
     m = Member.find_by_id member_id
     return if m.blank?
     Order.find_or_create_by(member_id: m.id, status: 'draft')
   end
 
+  def add_amount(product_id)
+    li = lineitems.find_by_product_id(product_id)
+    li.present? ? li.update(amount: li.amount+1) : Lineitem.create(product_id: product_id, order_id: id, amount: 1)
+  end
+
+  def reduce_amount(product_id)
+    li = lineitems.find_by_product_id(product_id)
+    if li.present?
+      li.amount > 1 ? li.update(amount: li.amount-1) : li.destroy
+    end
+  end
+
   def brief
     "#{lineitems.first.product.name}\"等#{lineitems.size}种共#{total_amount}件商品。"
+  end
+
+  def product_amount(product)
+    lineitems.find_by_product_id(product.id).try(:amount) || 0
   end
 
   def sum_price

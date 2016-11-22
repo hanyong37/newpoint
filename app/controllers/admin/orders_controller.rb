@@ -4,7 +4,11 @@ class Admin::OrdersController < Admin::ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    if params[:filter].present? && Order.respond_to?(params[:filter])
+      @orders = Order.send(params[:filter]).page params[:page]
+    else
+      @orders = Order.all.page params[:page]
+    end
   end
 
   # GET /orders/1
@@ -29,7 +33,7 @@ class Admin::OrdersController < Admin::ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to admin_orders_path, notice: 'Order was successfully created.' }
+        format.html { redirect_to admin_orders_path, notice: 'Order was successfully created.'}
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -41,9 +45,16 @@ class Admin::OrdersController < Admin::ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+
+    params[:order][:status] = 'submitted' if params.include? 'change_to_submitted'
+    params[:order][:status] = 'delivering' if params.include? 'change_to_delivering'
+    params[:order][:status] = 'preparing' if params.include? 'change_to_preparing'
+    params[:order][:status] = 'recieved' if params.include? 'change_to_recieved'
+    params[:order][:status] = 'cancelled' if params.include? 'change_to_cancelled'
+
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to [:admin,@order], notice: 'Order was successfully updated.' }
+        format.html { redirect_to "/admin/orders?filter=#{params[:return_filter]}", notice: "订单[#{@order.id}]保存成功！"}
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -57,19 +68,19 @@ class Admin::OrdersController < Admin::ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to admin_orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to admin_orders_url, notice: '订单已被删除！' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:member_id, :memo, :address, :status, :feedback, :stars)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:member_id, :memo, :address, :status, :feedback, :stars)
+  end
 end

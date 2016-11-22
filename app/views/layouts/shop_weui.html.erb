@@ -6,6 +6,7 @@
     <title>北京新焦点农业</title>
     <%= stylesheet_link_tag 'weui-rails', media: 'all' %>
     <script src="http://cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js"></script>
+    <%= javascript_include_tag "shop" %>
   </head>
   <body ontouchstart >
     <div class='container' style="background-color: #eeeeee;">
@@ -23,7 +24,7 @@
     <% end %>
       </div>
 
-      <div class="page__bd" style="padding-bottom:15%">
+      <div class="page__bd" style="padding-bottom:25%">
         <%=yield %>
       </div>
 

@@ -54,10 +54,10 @@ class Admin::MembershipsController < Admin::ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
-    @membership.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_memberships_url, notice: 'Membership was successfully destroyed.' }
-      format.json { head :no_content }
+    if @membership.destroy
+      redirect_to admin_memberships_url, notice: '会员卡删除成功！'
+    else
+      redirect_to admin_memberships_url, notice: '删除失败！'
     end
   end
 

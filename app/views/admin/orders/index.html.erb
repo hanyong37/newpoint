@@ -1,6 +1,26 @@
 <%- model_class = Order -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="<%=params[:filter]=='all' || params[:filter].nil? ? "active": ""%>">
+          <%= link_to admin_orders_path do %>
+            全部订单<span class="badge"><%=Order.all.size%></span>
+          <% end %>
+        </li>
+
+  <% Order.statuses.keys.each do |stat|%>
+    <li role="presentation" class="<%=params[:filter]==stat ? "active": ""%>">
+      <%= link_to "/admin/orders?filter=#{stat}" do%>
+        <%=t "enums.order.status.#{stat}"%><span class="badge"><%=Order.send(stat).size%></span>
+      <%end%></li>
+  <%end%>
+
+      </ul>
+    </div>
+  </div>
 </div>
 <table class="table table-striped">
   <thead>
@@ -9,13 +29,11 @@
       <th><%= model_class.human_attribute_name(:member_id) %></th>
       <th><%= model_class.human_attribute_name(:memo) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
-      <th><%= model_class.human_attribute_name(:li_number) %></th>
-      <th><%= model_class.human_attribute_name(:sum_price) %></th>
+      <th>商品种类</th>
+      <th>商品总份数</th>
       <th><%= model_class.human_attribute_name(:status) %></th>
-      <th><%= model_class.human_attribute_name(:feedback) %></th>
-      <th><%= model_class.human_attribute_name(:stars) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>更新时
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
@@ -24,29 +42,37 @@
         <td><%= link_to order.id, admin_order_path(order) %></td>
         <td><%= order.member.name%></td>
         <td><%= order.memo %></td>
-        <td><%= order.address %></td>
+        <td><%= truncate order.address, length:15 %></td>
         <td><%= order.li_number %></td>
-        <td><%= order.sum_price %></td>
-        <td><%= order.status_i18n %></td>
-        <td><%= order.feedback %></td>
-        <td><%= order.stars %></td>
-        <td><%=l order.created_at %></td>
+        <td><%= order.total_amount %></td>
+        <td>
+          <%= form_for [:admin, order] do |f| %>
+            <%= left_button(order.status) %>
+            <%= order.status_i18n %>
+            <%= f.hidden_field :status %>
+            <%= hidden_field_tag :return_filter, params[:filter] %>
+            <%= right_button(order.status) %>
+          <% end %>
+        </td>
+        <td><%=l order.updated_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      admin_order_path(order), :class => 'btn btn-default btn-xs' %>
+            admin_order_path(order), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_admin_order_path(order), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      admin_order_path(order),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
+            edit_admin_order_path(order), :class => 'btn btn-default btn-xs' %>
+          <!--
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+            admin_order_path(order),
+            :method => :delete,
+            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+            :class => 'btn btn-xs btn-danger' %>
+        -->
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_admin_order_path,
-            :class => 'btn btn-primary' %>
+  new_admin_order_path,
+  :class => 'btn btn-success' %>
+<%= paginate @orders %>

@@ -8,8 +8,9 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th>会员卡</th>
+      <th>已完成订单</th>
       <th><%= model_class.human_attribute_name(:mobile) %></th>
-      <th>微信关联？</th>
+      <th>已关联微信？</th>
       <th><%= model_class.human_attribute_name(:validate_from) %></th>
       <th><%= model_class.human_attribute_name(:validate_to) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -22,6 +23,7 @@
         <td><%= link_to member.id, admin_member_path(member) %></td>
         <td><%= member.name %></td>
         <td><%= member.membership.name %></td>
+        <td><%= member.recieved_orders %></td>
         <td><%= member.mobile %></td>
         <td><%= member.wx_connected? %></td>
         <td><%= member.validate_from %></td>

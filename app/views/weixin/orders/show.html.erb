@@ -43,23 +43,6 @@
         </div>
   </div>
 
-  <!-- 按钮区域-->
-  <div class="weui-panel weui-panel_access">
-    <div class="weui-panel__bd">
-      <div class="weui-panel weui-panel_access">
-        <div class="weui-panel__bd">
-          <div class="weui-btn-area">
-            <%= form_for [:weixin, @order] do |f| %>
-              <%= f.submit '取消订单', class: 'weui-btn weui-btn_warn', data: { confirm: "确定要取消吗?" } if @order.submitted? %>
-              <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style='height:30px' > &nbsp </div>
-
-  </div>
 
   <!--收货信息-->
   <div class="weui-panel weui-panel_access">
@@ -101,20 +84,18 @@
   </div>
 
   <!-- 按钮区域-->
-  <div class="weui-panel weui-panel_access">
+  <div class="weui-panel weui-panel_access" style='margin-buttom:70px'>
     <div class="weui-panel__bd">
       <div class="weui-panel weui-panel_access">
         <div class="weui-panel__bd">
           <div class="weui-btn-area">
             <%= form_for [:weixin, @order] do |f| %>
-              <%= f.submit '取消订单', class: 'weui-btn weui-btn_warn', data: { confirm: "确定要取消吗?" } if @order.submitted? %>
+              <%= f.submit '取消订单', class: 'weui-btn weui-btn_plain-default', data: { confirm: "确定要取消吗?" } if @order.submitted? %>
               <% end %>
           </div>
         </div>
       </div>
     </div>
-
-    <div style='height:30px' > &nbsp </div>
 
   </div>
 
