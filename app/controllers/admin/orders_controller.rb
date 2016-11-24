@@ -5,9 +5,9 @@ class Admin::OrdersController < Admin::ApplicationController
   # GET /orders.json
   def index
     if params[:filter].present? && Order.respond_to?(params[:filter])
-      @orders = Order.send(params[:filter]).page params[:page]
+      @orders = Order.admin_list.send(params[:filter]).page params[:page]
     else
-      @orders = Order.all.page params[:page]
+      @orders = Order.admin_list.all.page params[:page]
     end
   end
 

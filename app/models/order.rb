@@ -10,6 +10,10 @@ class Order < ApplicationRecord
 
   default_scope ->{order(id: :desc)}
   scope :my_order, ->(member_id) {where("member_id = '?' and status <> ?", member_id, Order.statuses[:draft]).order(updated_at: :desc) if member_id.present?}
+  scope :valid_order, -> {where("status not in (?)", [Order.statuses[:draft], Order.statuses[:cancelled]])}
+  scope :admin_list, -> {where("status <> ?", Order.statuses[:draft])}
+
+  enum create_by: { admin: 0, customer:1}
 
   enum status: {
     draft: 0,       #草稿，购物车
@@ -23,6 +27,10 @@ class Order < ApplicationRecord
 
   def amount_of_product(product_id)
     lineitems.find_by_product_id(product_id).try(:amount) || 0
+  end
+
+  def text_id
+      'NP-O-'+Date.today.strftime("%Y")+created_at.strftime('%m%s')
   end
 
   def self.get_cart_order(member_id)

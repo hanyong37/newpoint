@@ -7,7 +7,9 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th>会员卡</th>
+      <th>会员卡号</th>
+      <th>会员送货日</th>
+      <th>剩余次数</th>
       <th>已完成订单</th>
       <th><%= model_class.human_attribute_name(:mobile) %></th>
       <th>已关联微信？</th>
@@ -22,8 +24,10 @@
       <tr>
         <td><%= link_to member.id, admin_member_path(member) %></td>
         <td><%= member.name %></td>
-        <td><%= member.membership.name %></td>
-        <td><%= member.recieved_orders %></td>
+        <td><%= member.membership_card_number%></td>
+        <td><%= member.default_ship_week_day%></td>
+        <td><%= member.remaining_count%></td>
+        <td><%= member.used_count %></td>
         <td><%= member.mobile %></td>
         <td><%= member.wx_connected? %></td>
         <td><%= member.validate_from %></td>

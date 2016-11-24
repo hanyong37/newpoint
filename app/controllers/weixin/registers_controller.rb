@@ -7,10 +7,10 @@ class Weixin::RegistersController < Weixin::ApplicationController
   end
 
   def create
-    @member = Member.find_by_mobile(params[:member][:mobile])
+    @member =  Member.where(mobile: params[:member][:mobile], membership_card_number: params[:member][:membership_card_number]).try(:first)
     if @member.blank?
       redirect_to new_weixin_register_path
-      flash[:notice] = '您还没有成为我们的会员，请与我们联系：电话 13912344321'
+      flash[:notice] = '您还好像还没有成为我们的会员，请与我们联系：电话 13912344321'
     else
       @member.wxcode = params[:member][:wxcode]
       @member.save

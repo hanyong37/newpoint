@@ -12,10 +12,12 @@
         </li>
 
   <% Order.statuses.keys.each do |stat|%>
+    <% if stat != 'draft' %>
     <li role="presentation" class="<%=params[:filter]==stat ? "active": ""%>">
       <%= link_to "/admin/orders?filter=#{stat}" do%>
         <%=t "enums.order.status.#{stat}"%><span class="badge"><%=Order.send(stat).size%></span>
       <%end%></li>
+  <%end%>
   <%end%>
 
       </ul>
@@ -25,8 +27,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:text_id) %></th>
       <th><%= model_class.human_attribute_name(:member_id) %></th>
+      <th><%= Member.human_attribute_name(:default_ship_week_day) %></th>
       <th><%= model_class.human_attribute_name(:memo) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th>商品种类</th>
@@ -39,8 +42,9 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.id, admin_order_path(order) %></td>
+        <td><%= link_to order.text_id, admin_order_path(order) %></td>
         <td><%= order.member.name%></td>
+        <td><%= order.member.default_ship_week_day%></td>
         <td><%= order.memo %></td>
         <td><%= truncate order.address, length:15 %></td>
         <td><%= order.li_number %></td>

@@ -69,6 +69,6 @@ class Admin::MembersController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit( :address ,:membership_id ,:validate_from, :validate_to,:name, :mobile,:default_ship_mobile, :default_ship_reciever, :default_ship_address)
+      params.require(:member).permit( :address ,:membership_id ,:validate_from, :validate_to,:name, :mobile,:default_ship_mobile, :default_ship_reciever, :default_ship_address, :default_ship_week_day, :membership_card_number)
     end
 end

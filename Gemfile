@@ -76,4 +76,5 @@ gem "omniauth-wechat-oauth2"
 
 gem 'weui-rails'
 gem 'kaminari'
+gem 'mina'
 # added by CX===============

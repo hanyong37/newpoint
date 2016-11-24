@@ -1,8 +1,22 @@
+<div class="page__hd">
+  <% if flash[:notice] %>
+    <div id='notice' >
+      <div class="weui-mask"></div>
+      <div class="weui-dialog">
+        <div class="weui-dialog__bd"><%=flash[:notice]%></div>
+        <div class="weui-dialog__ft">
+          <a href="#" onclick="document.getElementById('notice').style.display='none';" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 <div class='page__bd'>
   <div class="weui-cells__title">请输入您的姓名手机号以确认身份:</div>
   <div class='weui-cells weui-cells_form'>
     <%= simple_form_for @member, url: weixin_register_path, defaults:{wrapper_html: { class: 'weui-cell' }, input_html:{class: 'weui-cell__bd weui-input'}, label_html:{class: 'weui-cell__hd, weui-label'}}  do |f| %>
-      <%= f.input :name %>
+      <%= f.input :membership_card_number %>
       <%= f.input :mobile%>
       <%= f.input :wxcode, as: :hidden , input_html:{value: session[:un_registered_openid]}%>
   </div>

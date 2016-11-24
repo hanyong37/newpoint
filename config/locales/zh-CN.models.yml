@@ -13,6 +13,9 @@ zh-CN:
         archived: 归档
         inactive: 不可用
     order:
+      created_by:
+        admin: 管理员
+        customer: 客户
       status:
         draft: 购物车
         submitted: 已提交
@@ -59,15 +62,18 @@ zh-CN:
         name: 名字
         mobile: 手机号
         wxcode: 微信
-        validate_from: 有效期开始日期
-        validate_to: 有效期结束日期
+        validate_from: 有效期自
+        validate_to: 有效期至
         created_at: 创建时间
         address: 送货地址
         default_ship_reciever:  默认收货人
         default_ship_mobile:  默认收货手机号
         default_ship_address:  默认收货地址
+        default_ship_week_day: 默认每周收货日
+        membership_card_number: 会员卡卡号
 
       order:
+        text_id: 订单号
         member_id: 会员
         memo: 下单备注
         address:  送货地址
@@ -78,6 +84,9 @@ zh-CN:
         li_number: 明细条目
         sum_price: 订单总价
         membership_id: 会员卡
+        ship_mobile:  订单收货手机号
+        ship_address:   订单收货地址
+        ship_reciever:  订单收货人
 
       lineitem:
         product_id: 商品

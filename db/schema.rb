@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113153931) do
+ActiveRecord::Schema.define(version: 20161122152211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20161113153931) do
   create_table "members", force: :cascade do |t|
     t.date     "validate_from"
     t.date     "validate_to"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.text     "address"
     t.string   "mobile"
     t.string   "wxcode"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20161113153931) do
     t.string   "default_ship_mobile"
     t.integer  "membership_id"
     t.string   "membership_number"
+    t.string   "membership_card_number"
+    t.integer  "default_ship_week_day"
     t.index ["membership_id"], name: "index_members_on_membership_id", using: :btree
   end
 
@@ -64,11 +66,14 @@ ActiveRecord::Schema.define(version: 20161113153931) do
     t.integer  "status"
     t.string   "feedback"
     t.integer  "stars"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "ship_reciever"
     t.string   "ship_address"
     t.string   "ship_mobile"
+    t.datetime "submitted_at"
+    t.integer  "created_by"
+    t.integer  "target_deliver_week"
   end
 
   create_table "products", force: :cascade do |t|

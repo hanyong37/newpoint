@@ -3,27 +3,70 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:member_id) %>:</strong></dt>
-  <dd><%= @order.member_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:memo) %>:</strong></dt>
-  <dd><%= @order.memo %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-  <dd><%= @order.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= @order.status %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:feedback) %>:</strong></dt>
-  <dd><%= @order.feedback %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:stars) %>:</strong></dt>
-  <dd><%= @order.stars %></dd>
-</dl>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%=t '.title', :default => model_class.model_name.human.titleize %></h3>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt><strong><%= model_class.human_attribute_name(:member_id) %>:</strong></dt>
+      <dd><%= @order.member.name %></dd>
+      <dt><strong>会员手机号:</strong></dt>
+      <dd><%= @order.member.mobile %></dd>
+      <dt><strong>会员卡号:</strong></dt>
+      <dd><%= @order.member.membership_card_number%></dd>
+      <dt><strong>会员默认送货日:</strong></dt>
+      <dd><%= @order.member.default_ship_week_day%></dd>
+      <dt><strong>会员卡类型:</strong></dt>
+      <dd><%= @order.member.membership.name %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+      <dd><%= @order.status_i18n %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:memo) %>:</strong></dt>
+      <dd><%= @order.memo %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:ship_reciever) %>:</strong></dt>
+      <dd><%= @order.ship_reciever %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:ship_mobile) %>:</strong></dt>
+      <dd><%= @order.ship_mobile %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:ship_address) %>:</strong></dt>
+      <dd><%= @order.ship_address %></dd>
+      <dt><strong>订单提交时间:</strong></dt>
+      <dd><%= (@order.submitted_at || '') %></dd>
+      <dt><strong>订单收货日:</strong></dt>
+      <dd><%= @order.target_deliver_week%></dd>
+      <dt><strong>创建人:</strong></dt>
+      <dd><%= @order.created_by%></dd>
+
+    </dl>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">订单明细</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>商品限量</th>
+          <th>此订单选购数量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.lineitems.each do |lineitem| %>
+          <tr>
+            <td><%= lineitem.product.name %></td>
+            <td><%= lineitem.product.limit %></td>
+            <td><%= lineitem.amount %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              admin_orders_path, :class => 'btn btn-default'  %>
+  admin_orders_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_admin_order_path(@order), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              admin_order_path(@order),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+  edit_admin_order_path(@order), :class => 'btn btn-default' %>

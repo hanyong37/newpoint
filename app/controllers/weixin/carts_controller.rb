@@ -19,14 +19,15 @@ class Weixin::CartsController < Weixin::ApplicationController
     elsif params[:submit].present?
       ocs = OrderCheckService.new(@cart)
 
-      if ocs.is_valid
-        if @cart.update(params.require(:order).permit(:ship_reciever, :ship_mobile, :ship_mobile, :memo).merge({status:'submitted'}))
+      #TODO debug
+      #if ocs.is_valid
+      if true
+        if @cart.update(params.require(:order).permit(:ship_reciever, :ship_mobile, :ship_mobile, :memo).merge({status:'submitted', submitted_at: Time.now}))
           #同步更新客户送货地址
           @cart.member.update(
             default_ship_reciever: @cart.ship_reciever,
             default_ship_mobile: @cart.ship_mobile,
             default_ship_address: @cart.ship_address )
-
           redirect_to weixin_cart_path(@cart), notice: '提交订单成功！'
         else
           redirect_to weixin_cart_path(@cart), notice: '保存失败！'

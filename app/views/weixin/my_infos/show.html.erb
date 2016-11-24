@@ -4,9 +4,14 @@
   <div class="weui-panel__bd">
     <div class="weui-media-box weui-media-box_text">
       <h5 class="weui-media-box__title">姓名：<%= @member.name %> </h5>
+      <h5 class="weui-media-box__title">会员卡号：<%= @member.membership_card_number%> </h5>
+      <h5 class="weui-media-box__title">会员卡类型：<%= @member.membership.name %> </h5>
       <h5 class="weui-media-box__title">手机号：<%= @member.mobile %> </h5>
-      <h5 class="weui-media-box__title">有效期：<%=l @member.validate_from %></h5>
-      <h5 class="weui-media-box__title">有效期到：<%=l @member.validate_to %> </h5>
+      <h5 class="weui-media-box__title">有效期开始日期：<%=l @member.validate_from %></h5>
+      <h5 class="weui-media-box__title">有效期结束日期：<%=l @member.validate_to %> </h5>
+      <h5  class="weui-media-box__title">可下单总次数：<%= @member.total_count %> </h5>
+      <h5 class="weui-media-box__title">还可以下单次数：<%= @member.remaining_count  %> </h5>
+      <h5 class="weui-media-box__title">已经下单次数：<%= @member.used_count %> </h5>
       <h5 class="weui-media-box__title">默认收货人：<%= @member.default_ship_reciever%> </h5>
       <h5 class="weui-media-box__title">默认收货手机号： <%= @member.default_ship_mobile%> </h5>
       <h5 class="weui-media-box__title">默认收货地址：<%= @member.default_ship_address%> </h5>

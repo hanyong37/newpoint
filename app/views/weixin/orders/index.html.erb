@@ -13,11 +13,11 @@
       已完成(<%=(@orders.recieved.size+@orders.stared.size+@orders.cancelled.size).to_s%>)
     </div>
   </div>
-  <div class="weui-tab__panel" style="margin-buttom:70px">
+  <div class="weui-tab__panel">
     <% if @orders.present? %>
       <% @orders.each do |order| %>
         <div class='np-item np-item-<%=order.status%>'>
-          <div class="weui-cells__title">更新时间:<%=l order.updated_at, format: :short %></div>
+          <div class="weui-cells__title">订单提交时间:<%=l order.submitted_at, format: :short %></div>
           <div class="weui-cells">
             <a class="weui-cell weui-cell_access" href='<%=weixin_order_path(order)%>'>
               <div class="weui-cell__hd">
