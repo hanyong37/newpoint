@@ -25,7 +25,7 @@ set :branch, 'master'
 set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
 
 # Optional settings:
-   set :user, 'npadminfoobar'    # Username in the server to SSH to.
+   set :user, 'npadmin'    # Username in the server to SSH to.
 #   set :port, '30000'     # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 
@@ -86,7 +86,9 @@ task :deploy => :environment do
       #queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
 
       queue %[cd #{deploy_to}/#{current_path}]
-      queue "cat #{deploy_to}/tmp/server.pid | xargs kill -s TERM"
+      if `cat #{deploy_to}/tmp/server.pid` != ''
+        queue "cat #{deploy_to}/tmp/server.pid | xargs kill -s TERM"
+      end
       queue 'bin/rails s -d -e production --pid `pwd`/../../tmp/server.pid'
     end
   end
