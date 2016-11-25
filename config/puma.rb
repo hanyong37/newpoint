@@ -1,26 +1,30 @@
-# 为什么无法取到环境变量？  ENV['RAILS_ENV'] => nil
-if ENV['RAILS_ENV'] == 'production'
+#Change to match your CPU core count
+workers 2
 
-  app_root = '/var/www/common_strength'
-  pidfile "#{app_root}/tmp/puma.pid"
-  state_path "#{app_root}/tmp/puma.state"
-#  bind "unix://#{app_root}/tmp/puma.sock"
-  stdout_redirect "#{app_root}/current/log/puma.log"
-#  activate_control_app "unix://#{app_root}/tmp/pumactl.sock"
-  daemonize true
-#  threads 1, 4
-#  preload_app!
-#
-#  on_worker_boot do
-#    ActiveSupport.on_load(:active_record) do
-#      ActiveRecord::Base.establish_connection
-#    end
+# Min and Max threads per worker
+threads 1, 6
+
+app_dir = File.expand_path("../..", __FILE__)
+shared_dir = "#{app_dir}/shared"
+
+# Default to production
+rails_env = ENV['RAILS_ENV'] || "production"
+environment rails_env
+
+# Set up socket location
+bind "unix://#{shared_dir}/sockets/puma.sock"
+
+# Logging
+stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
+
+# Set master PID and state locations
+pidfile "#{shared_dir}/pids/puma.pid"
+state_path "#{shared_dir}/pids/puma.state"
+activate_control_app
+
+on_worker_boot do
+  require "active_record"
+  ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
+  ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
 end
-#
-#  before_fork do
-#    ActiveRecord::Base.connection_pool.disconnect!
-#  end
-#
-#else
-#  plugin :tmp_restart
-#end
+

@@ -19,7 +19,7 @@ set :branch, 'master'
 set :forward_agent, true
 set :app_path, lambda { "#{deploy_to}/#{current_path}" }
 set :stage, 'production'
-set :rvm_path, '/home/deploy/.rvm/bin/rvm'
+#set :rvm_path, '/home/deploy/.rvm/bin/rvm'
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
