@@ -59,9 +59,9 @@ class Order < ApplicationRecord
     lineitems.find_by_product_id(product.id).try(:amount) || 0
   end
 
-  def sum_price
-    self.lineitems.sum(:price)
-  end
+  #def sum_price
+  #  self.lineitems.sum(:price)
+  #end
 
   def li_number
     self.lineitems.size

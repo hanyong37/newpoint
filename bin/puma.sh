@@ -1,8 +1,8 @@
 #! /bin/sh
 
-PUMA_CONFIG_FILE=/var/www/newpoint/shared/config/puma.rb
-PUMA_PID_FILE=/var/www/newpoint/shared/tmp/pids/puma.pid
-PUMA_SOCKET=/var/www/newpoint/shared/tmp/sockets/puma.sock
+PUMA_CONFIG_FILE=/var/www/newpoint/current/config/puma.rb
+PUMA_PID_FILE=/var/www/newpoint/shared/pids/puma.pid
+PUMA_SOCKET=/var/www/newpoint/shared/sockets/puma.sock
 
 # check if puma process is running
 puma_is_running() {
