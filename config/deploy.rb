@@ -110,9 +110,9 @@ task :deploy => :environment do
     queue! "cd #{app_path} & RAILS_ENV=#{stage} bundle exec rake db:seed"
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-    invoke :'puma:restart'
 
     to :launch do
+      invoke :'puma:restart'
     end
   end
 end
