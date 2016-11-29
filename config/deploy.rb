@@ -56,7 +56,7 @@ task :deploy do
 
     on :launch do
       in_path(fetch(:current_path)) do
-        command "cat /var/www/newpoint/shared/pids/puma.pid | xargs kill -s TERM "
+        #command "cat /var/www/newpoint/shared/pids/puma.pid | xargs kill -s TERM "
         command "RAILS_ENV=production && bundle exec puma -C /var/www/newpoint/shared/config/puma.rb -d"
         #command %{mkdir -p tmp/}
         #command %{touch tmp/restart.txt}

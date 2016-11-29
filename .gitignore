@@ -27,3 +27,8 @@
 tags
 # ignore impages uploaded in dev.
 public/uploads/*
+config/database.yml
+
+config/database.yml
+
+config/database.yml
