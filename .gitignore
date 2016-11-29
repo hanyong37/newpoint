@@ -38,3 +38,5 @@ config/database.yml
 .ruby-version
 
 .ruby-gemset
+
+log/.keep

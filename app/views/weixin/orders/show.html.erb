@@ -6,10 +6,10 @@
       <h5 class="weui-media-box__title">订单号：<%=@order.id%></h5>
       <h5 class="weui-media-box__title">状态：<%=@order.status_i18n%></h5>
       <h5 class="weui-media-box__title">描述：<%=@order.brief%></h5>
-      <h5 class="weui-media-box__title">总价：<%=icon('rmb')%> <%=@order.total_amount%></h5>
+      <h5 class="weui-media-box__title">总份数： <%=@order.total_amount%></h5>
 
       <ul class="weui-media-box__info">
-        <li class="weui-media-box__info__meta">更新时间:<%= l @order.updated_at , format: :short%></li>
+        <li class="weui-media-box__info__meta">提交时间:<%= l @order.submitted_at , format: :short%></li>
       </ul>
     </div>
   </div>
@@ -32,8 +32,7 @@
 
             <div class="weui-media-box__bd">
               <h4 class="weui-media-box__title"><%=li.product.name%></h4>
-              <p class="weui-media-box__desc">单价: <%=li.product.price%> 合计: <%=li.price%></p>
-              <p class="weui-media-box__desc">数量: <%=li.amount%></p>
+              <p class="weui-media-box__desc">份数: <%=li.amount%></p>
             </div>
             <div class="weui-media-box__ft">
             </div>
