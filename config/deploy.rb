@@ -20,8 +20,8 @@ set :user, 'npadmin'          # Username in the server to SSH to.
 set :forward_agent, true     # SSH forward_agent.
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
-# set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
-# set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
+set :shared_dirs, fetch(:shared_dirs, []).push('shared')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
@@ -57,8 +57,9 @@ task :deploy do
     on :launch do
       in_path(fetch(:current_path)) do
         #command "cat /var/www/newpoint/shared/pids/puma.pid | xargs kill -s TERM "
-        command "RAILS_ENV=production && bundle exec puma -C /var/www/newpoint/shared/config/puma.rb -d"
-        #command %{mkdir -p tmp/}
+        #command "RAILS_ENV=production bin/rails s -d"
+        #command "RAILS_ENV=production && bundle exec puma -C /var/www/newpoint/shared/config/puma.rb -d"
+        command %{mkdir -p tmp/}
         #command %{touch tmp/restart.txt}
       end
     end
