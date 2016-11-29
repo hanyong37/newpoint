@@ -10,7 +10,7 @@
         <% @cart.lineitems.each do |li| %>
           <div class="weui-media-box weui-media-box_appmsg">
             <div class="weui-media-box__hd">
-              <%= image_tag(li.product.photo_url, class: 'weui-media-box__thumb') %>
+              <%= image_tag(li.product.photo_url(:thumb), class: 'weui-media-box__thumb') %>
             </div>
 
             <div class="weui-media-box__bd">

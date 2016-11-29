@@ -21,7 +21,7 @@
           <div class="weui-cells">
             <a class="weui-cell weui-cell_access" href='<%=weixin_order_path(order)%>'>
               <div class="weui-cell__hd">
-                <%= image_tag(order.lineitems.first.product.photo_url, class: 'np-ord-index-img' ) %>
+                <%= image_tag(order.lineitems.first.product.photo_url(:thumb), class: 'np-ord-index-img' ) %>
               </div>
               <div class="weui-cell__bd">
                 <p><%="#[#{order.id}]"%><%=order.brief%></p>

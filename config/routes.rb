@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'weixin/products#index'
+
   namespace  :admin do
     root "orders#index"
     resources :memberships
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
 
   #get '/auth/wechat' to omniauth, after wechat authentication, it will come back to callback;
   get '/auth/wechat/callback', to: 'weixin/sessions#create'
+
   namespace :weixin do
     root 'products#index'
     resource :session, only: [:create]
@@ -26,7 +28,6 @@ Rails.application.routes.draw do
     end
     resources :orders, only: [:index, :show, :update]
     resource :my_info, only: [:show, :update]
-    #resource :shop, only: [:show]
   end
 
  # get "log_out" => "sessions#destroy"
