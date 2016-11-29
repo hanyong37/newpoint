@@ -76,6 +76,6 @@ gem "omniauth-wechat-oauth2"
 
 gem 'weui-rails'
 gem 'kaminari'
-gem 'mina'
+gem 'mina','>= 1.0.0'
 gem 'carrierwave-qiniu', '~> 1.0.0'
 # added by CX===============

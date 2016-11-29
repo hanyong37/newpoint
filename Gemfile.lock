@@ -74,7 +74,7 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
-    domain_name (0.5.20161021)
+    domain_name (0.5.20161129)
       unf (>= 0.0.5, < 1.0.0)
     enum_help (0.0.16)
     erubis (2.7.0)
@@ -258,7 +258,7 @@ DEPENDENCIES
   kaminari
   less-rails
   listen (~> 3.0.5)
-  mina
+  mina (>= 1.0.0)
   omniauth-wechat-oauth2
   pg
   puma (~> 3.0)
