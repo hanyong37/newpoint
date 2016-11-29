@@ -7,7 +7,7 @@
       <ul class="nav nav-pills" role="tablist">
         <li role="presentation" class="<%=params[:filter]=='all' || params[:filter].nil? ? "active": ""%>">
           <%= link_to admin_orders_path do %>
-            全部订单<span class="badge"><%=Order.all.size%></span>
+            全部订单<span class="badge"><%=Order.admin_list.size%></span>
           <% end %>
         </li>
 
