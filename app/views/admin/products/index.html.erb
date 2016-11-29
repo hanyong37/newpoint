@@ -23,7 +23,7 @@
         <td><%= product.name %></td>
         <td class=' hidden-xs'><%= truncate product.desc, length: 15 %></td>
         <td><%= product.limit %></td>
-        <td class=' hidden-xs'><%= image_tag(product.photo_url, class: 'product-sm-img') %></td>
+        <td class=' hidden-xs'><%= image_tag(product.photo_url(:thumb), class: 'product-sm-img') %></td>
         <td><%= product.status_i18n %></td>
         <td><%= product.category.name %></td>
         <td class=' hidden-xs'><%=l product.created_at %></td>

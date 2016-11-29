@@ -112,9 +112,7 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      if `cat #{app_path}/shared/pids/puma.pid` != ''
-        queue "cat #{app_path}/shared/pids/puma.pid | xargs kill -s TERM"
-      end
+      queue! "cat /var/www/newpoint/shared/pids/puma.pid | xargs kill -s TERM "
       queue "cd #{app_path} && RAILS_ENV=#{stage} && bundle exec puma -e production -C #{deploy_to}/shared/config/puma.rb -d"
         #queue 'bundle exec puma -e production -C config/puma.rb -d'
     end
