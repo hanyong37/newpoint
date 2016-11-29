@@ -3,11 +3,11 @@ class Lineitem < ApplicationRecord
   validates_uniqueness_of :order_id ,scope: :product_id
   belongs_to :product
   belongs_to :order
-  before_save :calculate_price
+  #before_save :calculate_price
 
   private
-  def calculate_price
-    self.price = amount * product.price
-    self.description = '产品明细描述'
-  end
+ # def calculate_price
+ #   self.price = amount * product.price
+ #   self.description = '产品明细描述'
+ # end
 end
