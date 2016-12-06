@@ -13,6 +13,7 @@ zh-CN:
       back: "返回"
       cancel: "取消"
       confirm: "确认操作吗？"
+      confirm_destroy: "确认删除吗？"
       destroy: "删除"
       new: "新增"
       edit: "编辑"

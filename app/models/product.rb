@@ -12,6 +12,7 @@ class Product < ApplicationRecord
     archived: -1}
 
   belongs_to :category
+  has_many :lineitems, dependent: :restrict_with_error
 
   mount_uploader :photo, PhotoUploader
 

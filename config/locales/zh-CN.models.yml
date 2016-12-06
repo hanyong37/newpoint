@@ -70,7 +70,7 @@ zh-CN:
         default_ship_mobile:  默认收货手机号
         default_ship_address:  默认收货地址
         default_ship_week_day: 默认每周收货日
-        membership_card_number: 会员卡卡号
+        membership_card_number: 会员卡号
 
       order:
         text_id: 订单号

@@ -4,7 +4,7 @@
     <div class="weui-panel weui-panel_access" style="position:fixed;width:100%;padding:0px;height:60px;z-index:1">
       <div class="weui-panel__hd" style='overflow:hidden'>
         <span style='width:50%'>
-          <img src="<%= image_path("newpoint.png") %>" style="width:20px;padding-bottom:-10;margin-right:5px;">商品列表
+          <img src="<%= image_path("new_log.jpg") %>" style="width:20px;padding-bottom:-10;margin-right:5px;">商品列表
           <span style="text-align:right;float:right;width:50%">
             可选 <span style='font-size:medium'><%= Member.find(session[:current_member_id]).membership.order_limit %></span>
           已选 <span style='font-size:medium' id='cart_total_amount'><%= @cart.total_amount %></span>
@@ -14,6 +14,10 @@
     </div>
 
     <div class="weui-panel weui-panel_access" style="margin-top:60px">
+      <div class="weui-panel__bd">
+        温馨提示：“商品选好后请在购物车中提交。”
+      </div>
+
       <div class="weui-panel__bd">
         <% @products.each do |product| %>
           <div class="weui-media-box weui-media-box_appmsg">
@@ -53,6 +57,7 @@
     </div>
   </div>
 </div>
+
 <div id="loadingToast"  style="display:none;">
   <div class="weui-mask_transparent"></div>
   <div class="weui-toast">

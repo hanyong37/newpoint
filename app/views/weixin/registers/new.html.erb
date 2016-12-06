@@ -13,7 +13,7 @@
 </div>
 
 <div class='page__bd'>
-  <div class="weui-cells__title">请输入您的姓名手机号以确认身份:</div>
+  <div class="weui-cells__title"> 欢迎登录新聚点会员选菜系统！</div>
   <div class='weui-cells weui-cells_form'>
     <%= simple_form_for @member, url: weixin_register_path, defaults:{wrapper_html: { class: 'weui-cell' }, input_html:{class: 'weui-cell__bd weui-input'}, label_html:{class: 'weui-cell__hd, weui-label'}}  do |f| %>
       <%= f.input :membership_card_number %>
@@ -25,3 +25,8 @@
   </div>
 </div>
 <% end %>
+<div class="page__bd page__bd_spacing">
+  <div class="weui-footer">
+    <p class="weui-footer__text">Copyright © 2016 北京新聚点农业有限公司</p>
+  </div>
+</div>

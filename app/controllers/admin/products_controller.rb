@@ -55,10 +55,17 @@ class Admin::ProductsController < Admin::ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
+    if @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to admin_products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
+    end
+    else
+    respond_to do |format|
+      format.html { redirect_to admin_products_url, notice: '删除失败！' }
+      format.json { head :no_content }
+    end
+
     end
   end
 
