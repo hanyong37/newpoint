@@ -4,7 +4,7 @@
     <% if @cart.lineitems.size == 0 %>
       <div class="weui-panel__hd">您还没有添加商品，快去选购吧～</div>
     <% else %>
-      <div class="weui-panel__hd">商品列表</div>
+      <div class="weui-panel__hd">已选菜品列表</div>
       <div class="weui-panel__bd">
 
         <% @cart.lineitems.each do |li| %>
@@ -31,26 +31,26 @@
   <div class="weui-panel weui-panel_access">
 
     <div class="weui-panel__bd">
-      <div class="weui-cells__title">确认订单信息</div>
+      <div class="weui-cells__title">确认订单配送信息</div>
 
       <div class="weui-cells weui-cells_form">
 
         <div class="weui-cell">
-          <div class="weui-cell__hd"><label class="weui-label">*<em>收货手机号</em></label></div>
+          <div class="weui-cell__hd"><label class="weui-label np-inline-title-text">收货手机号:</label></div>
           <div class="weui-cell__bd">
             <%= f.text_field :ship_mobile, type:'tel', placeholder:'请输入手机号',class:'weui-input' %>
           </div>
         </div>
 
         <div class="weui-cell">
-          <div class="weui-cell__hd"><label class="weui-label">*<em>收件人</em></label></div>
+          <div class="weui-cell__hd"><label class="weui-label np-inline-title-text">收件人:</label></div>
           <div class="weui-cell__bd">
             <%= f.text_field :ship_reciever, type:'text', placeholder:'请输入收件人姓名',class:'weui-input' %>
           </div>
         </div>
 
         <div class="weui-cell">
-          <div class="weui-cell__bd"> *<em>收货地址 </em></div>
+          <div class="weui-cell__bd np-inline-title-text"> 收货地址: </div>
         </div>
 
         <div class="weui-cell">
@@ -60,7 +60,7 @@
         </div>
 
         <div class="weui-cell">
-          <div class="weui-cell__bd"> *<em>订单备注 </em></div>
+          <div class="weui-cell__bd np-inline-title-text"> 订单备注: </div>
         </div>
         <div class="weui-cell">
           <div class="weui-cell__bd">
