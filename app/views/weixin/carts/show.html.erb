@@ -15,11 +15,10 @@
 
             <div class="weui-media-box__bd">
               <h4 class="weui-media-box__title"><%=li.product.name%></h4>
-              <p class="weui-media-box__desc">单价: <%=li.product.price%> 合计: <%=li.price%></p>
               <p class="weui-media-box__desc">数量: <%=li.amount%></p>
             </div>
             <div class="weui-media-box__ft">
-              <%= f.submit "删除", name:"delete_lineitem[#{li.id}]", data: { confirm: "确定要删除吗？" }, :class => 'weui-btn weui-btn_warn weui-btn_mini' %>
+              <%= f.submit "删除", name:"delete_lineitem[#{li.id}]", data: { confirm: "确定要删除吗？" }, :class => 'weui-btn weui-btn_default weui-btn_mini' %>
             </div>
           </div>
         <% end %>
@@ -31,40 +30,40 @@
   <div class="weui-panel weui-panel_access">
 
     <div class="weui-panel__bd">
-      <div class="weui-cells__title">确认订单配送信息</div>
+      <div class="weui-cells__title">配送信息</div>
 
       <div class="weui-cells weui-cells_form">
 
         <div class="weui-cell">
-          <div class="weui-cell__hd"><label class="weui-label np-inline-title-text">收货手机号:</label></div>
+          <div class="weui-cell__hd"><label class="weui-label np-inline-title-text">收货手机号</label></div>
           <div class="weui-cell__bd">
             <%= f.text_field :ship_mobile, type:'tel', placeholder:'请输入手机号',class:'weui-input' %>
           </div>
         </div>
 
         <div class="weui-cell">
-          <div class="weui-cell__hd"><label class="weui-label np-inline-title-text">收件人:</label></div>
+          <div class="weui-cell__hd"><label class="weui-label np-inline-title-text">收件人</label></div>
           <div class="weui-cell__bd">
-            <%= f.text_field :ship_reciever, type:'text', placeholder:'请输入收件人姓名',class:'weui-input' %>
+            <%= f.text_field :ship_reciever, type:'text', placeholder:'请输入',class:'weui-input' %>
           </div>
         </div>
 
         <div class="weui-cell">
-          <div class="weui-cell__bd np-inline-title-text"> 收货地址: </div>
+          <div class="weui-cell__bd np-inline-title-text"> 收货地址 </div>
         </div>
 
         <div class="weui-cell">
           <div class="weui-cell__bd">
-            <%= f.text_area :ship_address, placeholder:'请输入收货地址', rows:3, class:'weui-textarea' %>
+            <%= f.text_area :ship_address, placeholder:'请输入', rows:3, class:'weui-textarea' %>
           </div>
         </div>
 
         <div class="weui-cell">
-          <div class="weui-cell__bd np-inline-title-text"> 订单备注: </div>
+          <div class="weui-cell__bd np-inline-title-text"> 订单备注 </div>
         </div>
         <div class="weui-cell">
           <div class="weui-cell__bd">
-            <%= f.text_area :memo, placeholder:'请输入备注', rows:3, class:'weui-textarea' %>
+            <%= f.text_area :memo, placeholder:'请输入', rows:3, class:'weui-textarea' %>
           </div>
         </div>
       </div>
