@@ -25,14 +25,17 @@ class Order < ApplicationRecord
     cancelled: -1   #已取消
   }
 
+  #商品总数
   def amount_of_product(product_id)
     lineitems.find_by_product_id(product_id).try(:amount) || 0
   end
 
+  #用于显示给客户的订单号
   def text_id
-      'NP-O-'+Date.today.strftime("%Y")+created_at.strftime('%m%s')
+      'XJD-'+created_at.strftime('%Y%W')+id.to_s
   end
 
+  #获取购物车订单id
   def self.get_cart_order(member_id)
     m = Member.find_by_id member_id
     return if m.blank?

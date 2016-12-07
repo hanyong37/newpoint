@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   validates :name, :limit, :status, :photo, presence: true
 
   default_scope {order(created_at: :desc)}
-  scope :shop_view, ->{where.not(status:'hidden').where.not(status: 'archived').order(view_priority: :asc)}
+  scope :shop_view, ->{unscoped.where.not(status:'hidden').where.not(status: 'archived').order(view_priority: :asc)}
 
   enum status: {
     hot: 3,

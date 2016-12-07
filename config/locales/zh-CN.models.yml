@@ -4,7 +4,7 @@ zh-CN:
       status:
         active: 正常
         archived: 归档
-        hidden: 不可用
+        hidden: 不显示
         fresh: 新品上市
         hot: 热销商品
     category:

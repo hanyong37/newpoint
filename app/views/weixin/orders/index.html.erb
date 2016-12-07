@@ -17,14 +17,14 @@
     <% if @orders.present? %>
       <% @orders.each do |order| %>
         <div class='np-item np-item-<%=order.status%>'>
-          <div class="weui-cells__title">订单提交时间:<%=l order.submitted_at, format: :short %></div>
+          <div class="weui-cells__title"><%="[#{order.text_id}]"%>提交时间:<%=l order.submitted_at, format: :short %></div>
           <div class="weui-cells">
             <a class="weui-cell weui-cell_access" href='<%=weixin_order_path(order)%>'>
               <div class="weui-cell__hd">
                 <%= image_tag(order.lineitems.first.product.photo_url(:thumb), class: 'np-ord-index-img' ) %>
               </div>
               <div class="weui-cell__bd">
-                <p><%="#[#{order.id}]"%><%=order.brief%></p>
+                <p><%=order.brief%></p>
               </div>
               <div class="weui-cell__ft"><%=order.status_i18n%></div>
             </a>
