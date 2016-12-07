@@ -9,6 +9,7 @@
       <th class=""><%= model_class.human_attribute_name(:name) %></th>
       <th class='hidden-xs'><%= model_class.human_attribute_name(:desc) %></th>
       <th class=""><%= model_class.human_attribute_name(:limit) %></th>
+      <th class=""><%= model_class.human_attribute_name(:view_priority) %></th>
       <th class='hidden-xs'><%= model_class.human_attribute_name(:photo) %></th>
       <th class=""><%= model_class.human_attribute_name(:status) %></th>
       <th class=""><%= model_class.human_attribute_name(:category_id) %></th>
@@ -23,6 +24,7 @@
         <td><%= product.name %></td>
         <td class=' hidden-xs'><%= truncate product.desc, length: 15 %></td>
         <td><%= product.limit %></td>
+        <td><%= product.view_priority %></td>
         <td class=' hidden-xs'><%= image_tag(product.photo_url(:thumb), class: 'product-sm-img') %></td>
         <td><%= product.status_i18n %></td>
         <td><%= product.category.name %></td>

@@ -51,6 +51,7 @@ zh-CN:
         status:	状态
         category:	类别
         stock: 库存
+        view_priority: 显示优先级
       user:
         name: 用户名
         password: 密码

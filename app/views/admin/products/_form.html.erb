@@ -2,6 +2,7 @@
   <%= f.input :name %>
   <%= f.input :desc %>
   <%= f.input :limit %>
+  <%= f.input :view_priority, input_html: { value: '1' }%>
   <%= f.input :photo, as: :file  %>
   <%= f.hidden_field :photo_cache %>
   <%= f.input :status, prompt: "--请选择商品状态--" %>
